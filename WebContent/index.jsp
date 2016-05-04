@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	HELLO ITS ME
+	<%="Teste Java"%>
 </body>
 </html>
