@@ -9,7 +9,7 @@ public class Conexao {
 	    // strings de conexão
 	    String databaseURL = "jdbc:postgresql://localhost/clinica2";
 	    String usuario = "postgres";
-	    String senha = "postgres";
+	    String senha = "admin";
 	    String driverName = "org.postgresql.Driver";
 	    
 	    try {
