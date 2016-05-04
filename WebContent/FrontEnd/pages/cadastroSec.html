@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Klinik - Clínica Médica</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Klinik</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  Olá, Admin <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
+                        </li>
+							 <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="indexAdmin.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                        </li>
+						
+                        <li>
+                            <a href="listaUsuario.html"><i class="fa fa-table fa-fw"></i> Gerenciamento</a> 
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="cadastroAdmin.html">Administrador</a>
+                                </li>
+                                <li>
+                                    <a href="cadastroMedico.html">Médico</a>
+                                </li>
+								<li>
+                                    <a href="#">Secretário</a>
+                                </li>
+							</ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"> </h3>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+							Cadastrar Secretário
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+                                            <label>Login</label>
+                                            <input class="form-control" placeholder="Ex: rot-g1">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label>Senha</label>
+                                            <input type="password" class="form-control" placeholder="">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label>Data de Nascimento</label>
+                                            <input class="form-control" placeholder="DD/MM/AAAA">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label>Nome</label>
+                                            <input class="form-control" placeholder="Ex: Joao 	">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label>Telefone</label>
+                                            <input class="form-control" placeholder="(XX) X XXXX XXXX">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" placeholder="john@doe.com">
+                                        </div>
+										
+										<div class="form-group">
+											<label>Turno</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">Manhã
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">Tarde
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox">Noite
+											</label>
+										</div>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+								
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>CEP</label>
+										<input class="form-control" placeholder="Ex: rot-g1">
+                                    </div>
+									
+									<div class="form-group">
+										<label>Logradouro</label>
+										<input class="form-control">
+									</div>
+									
+									<div class="form-group">
+										<label>Número</label>
+										<input class="form-control" placeholder="">
+									</div>
+									
+									<div class="form-group">
+										<label>Bairro</label>
+										<input class="form-control" placeholder="Ex: rot-g1">
+									</div>									
+									
+									<div class="form-group">
+										<label>Complemento</label>
+										<input class="form-control" placeholder="Ex: rot-g1">
+									</div>
+									
+									
+									<div class = "form-group">
+										<label>Estado</label>
+											<select class="form-control" name="uf" id="uf">
+												<option value="">Selecione</option>
+												<option value="AC">Acre</option>
+												<option value="AL">Alagoas</option>
+												<option value="AM">Amazonas</option>
+												<option value="AP">Amapá</option>
+												<option value="BA">Bahia</option>
+												<option value="CE">Ceará</option>
+												<option value="DF">Distrito Federal</option>
+												<option value="ES">Espírito Santo</option>
+												<option value="GO">Goiás</option>
+												<option value="MA">Maranhão</option>
+												<option value="MG">Minas Gerais</option>
+												<option value="MS">Mato Grosso do Sul</option>
+												<option value="MT">Mato Grosso</option>
+												<option value="PA">Pará</option>
+												<option value="PB">Paraíba</option>
+												<option value="PE">Pernambuco</option>
+												<option value="PI">Piauí</option>
+												<option value="PR">Paraná</option>
+												<option value="RJ">Rio de Janeiro</option>
+												<option value="RN">Rio Grande do Norte</option>
+												<option value="RS">Rio Grande do Sul</option>
+												<option value="RO">Rondônia</option>
+												<option value="RR">Roraima</option>
+												<option value="SC">Santa Catarina</option>
+												<option value="SE">Sergipe</option>
+												<option value="SP">São Paulo</option>
+												<option value="TO">Tocantins</option>
+											</select>
+									</div>
+									
+									<div class="form-group">
+										<label>Cidade</label>
+										<input class="form-control" placeholder="Ex: rot-g1">
+									</div>
+								</div>
+                            </div>
+								<button type="submit"  class="btn btn-default">Enviar</button>
+								<button type="reset"  class="btn btn-default">Limpar Campos</button>
+							
+							</form>
+                            <!-- /.row (nested) -->
+                        </div>
+						
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+					
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
