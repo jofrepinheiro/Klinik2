@@ -77,6 +77,9 @@ public class AdministradorDAO {
 	public void cadastrarAdministrador(Administrador administrador) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		int endereco = enderecoDAO.getIdEndereco();
+		administrador.setIdEndereco(endereco);
 		usuarioDAO.cadastrarUsuario(administrador);
 		int idUsuario = usuarioDAO.getIdUsuario();
 		

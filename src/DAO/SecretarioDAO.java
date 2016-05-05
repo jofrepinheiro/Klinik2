@@ -77,6 +77,10 @@ public class SecretarioDAO {
 	public void cadastrarSecretario(Secretario secretario) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		int endereco = enderecoDAO.getIdEndereco();
+		secretario.setIdEndereco(endereco);
+		
 		usuarioDAO.cadastrarUsuario(secretario);
 		int idUsuario = usuarioDAO.getIdUsuario();
 		System.out.println("USUARIO = " + idUsuario);

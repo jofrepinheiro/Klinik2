@@ -79,8 +79,12 @@ public class MedicoDAO {
 	public void cadastrarMedico(Medico medico) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		int endereco = enderecoDAO.getIdEndereco();
+		medico.setIdEndereco(endereco);
 		usuarioDAO.cadastrarUsuario(medico);
 		int idUsuario = usuarioDAO.getIdUsuario();
+		
 		
 		String sql = "INSERT INTO MEDICO (idUsuario, CRM) VALUES (?, ?)";
 		

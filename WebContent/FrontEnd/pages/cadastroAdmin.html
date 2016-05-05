@@ -108,37 +108,38 @@
 							<h4>Cadastrar Administrador</h4>
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleMedico.jsp">
+								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>Login</label>
-                                            <input class="form-control" placeholder="Ex: rot-g1">
+                                            <input name="login" class="form-control" placeholder="Ex: rot-g1">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Senha</label>
-                                            <input type="password" class="form-control" placeholder="">
+                                            <input name="senha" type="password" class="form-control" placeholder="">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Data de Nascimento</label>
-                                            <input class="form-control" placeholder="DD/MM/AAAA">
+                                            <input class="form-control" name="dataNascimento" placeholder="DD/MM/AAAA">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Nome</label>
-                                            <input class="form-control" placeholder="Ex: Joao 	">
+                                            <input class="form-control" name="nome" placeholder="Ex: Joao 	">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Telefone</label>
-                                            <input class="form-control" placeholder="(XX) X XXXX XXXX">
+                                            <input class="form-control" name="telefone" placeholder="(XX) X XXXX XXXX">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" placeholder="john@doe.com">
+                                            <input class="form-control" name="email" placeholder="john@doe.com">
                                         </div>
 										
                                 </div>
