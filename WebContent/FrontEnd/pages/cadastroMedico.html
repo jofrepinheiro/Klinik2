@@ -114,47 +114,48 @@
 							Cadastrar Médico
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleMedico.jsp">
+								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>Login</label>
-                                            <input class="form-control" placeholder="Ex: rot-g1">
+                                            <input name="login" class="form-control" placeholder="Ex: rot-g1">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Senha</label>
-                                            <input type="password" class="form-control" placeholder="">
+                                            <input name="senha" type="password" class="form-control" placeholder="">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Data de Nascimento</label>
-                                            <input class="form-control" placeholder="DD/MM/AAAA">
+                                            <input name="dataNascimento" class="form-control" placeholder="DD/MM/AAAA">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Nome</label>
-                                            <input class="form-control" placeholder="Ex: Joao 	">
+                                            <input name="nome" class="form-control" placeholder="Ex: Joao 	">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Telefone</label>
-                                            <input class="form-control" placeholder="(XX) X XXXX XXXX">
+                                            <input name="telefone" class="form-control" placeholder="(XX) X XXXX XXXX">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" placeholder="john@doe.com">
+                                            <input name="email" class="form-control" placeholder="john@doe.com">
                                         </div>
 										
 										<div class="form-group">
 											<label>CRM</label>
-											<input class="form-control" placeholder="">
+											<input name="crm" class="form-control" placeholder="">
 										</div>
 										
 										<div class="form-group">
 											<label>Especialidade Principal</label>
-											<select class="form-control" id="sel1">
+											<select class="form-control" id="sel1" name="esp1">
 												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>
 												<option value="ONCO">Oncologia</option>
@@ -167,7 +168,7 @@
 										
 										<div class="form-group">
 											<label>Especialidade Secundária</label>
-											<select class="form-control" id="sel1">
+											<select class="form-control" id="sel1" name="esp2">
 												<option value="NULL">--</option>
 												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>

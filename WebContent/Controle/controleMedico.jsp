@@ -1,3 +1,4 @@
+<%@page import="model.Medico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,6 +20,7 @@ System.out.println("Acao: " + action);
   String senha;
   String dataNascimento;
   String nome;
+  String cpf;
   String telefone;
   String email;
 
@@ -27,8 +29,12 @@ System.out.println("Acao: " + action);
   senha = request.getParameter("senha");
   nome = request.getParameter("nome");
   telefone = request.getParameter("telefone");
+  cpf = request.getParameter("cpf");
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
+  
+  Medico medico = new Medico();
+  medico.set
  
 //}
 %>
