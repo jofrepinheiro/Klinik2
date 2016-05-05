@@ -1,3 +1,4 @@
+<%@page import="model.Endereco"%>
 <%@page import="model.Medico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -23,6 +24,13 @@ System.out.println("Acao: " + action);
   String cpf;
   String telefone;
   String email;
+  String bairro;
+  String logradouro;
+  int numero;
+  String estado;
+  String cidade;
+  String complemento;
+  String cep;
 
   // dados informados no formulário
   login = request.getParameter("login");
@@ -33,8 +41,25 @@ System.out.println("Acao: " + action);
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
   
+  bairro = request.getParameter("bairro");
+  logradouro = request.getParameter("logradouro");
+  numero = request.getParameter("numero");
+  cidade = request.getParameter("cidade");
+  estado = request.getParameter("estado");
+  complemento = request.getParameter("complemento");
+  cep = request.getParameter("cep");
+  
+  Endereco endereco = new Endereco();
   Medico medico = new Medico();
-  medico.set
+  
+  endereco.setBairro(bairro);
+  endereco.setComplemento(complemento);
+  endereco.setCEP(cep);
+  endereco.setCidade(cidade);
+  endereco.setLogradouro(logradouro);
+  endereco.setNumero(numero);
+  
+  
  
 //}
 %>
