@@ -10,9 +10,9 @@ import model.Administrador;
 import model.Endereco;
 
 public class EnderecoDAO {
-	public void cadastrarAdministrador(Endereco endereco) throws SQLException{
+	public void cadastrarEndereco(Endereco endereco) throws SQLException{
 		Connection con = new Conexao().getConnection();
-		
+		System.out.println("--------jbdbd--------ncb dchjbd-----vn sdvjhd -");
 		String sql = "INSERT INTO ENDERECO (logradouro, bairro, numero, cep, complemento) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);

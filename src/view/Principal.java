@@ -6,9 +6,11 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import DAO.AdministradorDAO;
+import DAO.EnderecoDAO;
 import DAO.MedicoDAO;
 import DAO.SecretarioDAO;
 import model.Administrador;
+import model.Endereco;
 import model.Medico;
 import model.Secretario;
 import model.Usuario;
@@ -16,12 +18,12 @@ import model.Usuario;
 public class Principal {
 
 	public static void main(String[] args) throws SQLException {
-		AdministradorDAO admDao = new AdministradorDAO();
-		Administrador adm = new Administrador();
-		MedicoDAO medicoDAO = new MedicoDAO();
-		Medico medico = new Medico();
-		SecretarioDAO secretarioDAO = new SecretarioDAO();
-		Secretario secretario = new Secretario();
+//		AdministradorDAO admDao = new AdministradorDAO();
+//		Administrador adm = new Administrador();
+//		MedicoDAO medicoDAO = new MedicoDAO();
+//		Medico medico = new Medico();
+//		SecretarioDAO secretarioDAO = new SecretarioDAO();
+//		Secretario secretario = new Secretario();
 //		adm.setAtivo(1);
 //		adm.setDataNascimento(null);
 //     	adm.setLogin("Railan Xisto");
@@ -32,19 +34,20 @@ public class Principal {
 //		admDao.cadastrarAdministrador(adm);
 //		System.out.println("teste");
 		
-		System.out.println("Secretarios");
+		Endereco endereco = new Endereco();
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		
-		for (int i=0; i < secretarioDAO.getSecretarioList().size(); i++){
-			System.out.print(secretarioDAO.getSecretarioList().get(i).getIdSecretario() + " ");
-			System.out.print(secretarioDAO.getSecretarioList().get(i).getNome() + " ");
-			System.out.println(secretarioDAO.getSecretarioList().get(i).getLogin() + " ");
-
-		}
-		
+		endereco.setBairro("Centro");
+		endereco.setCEP("494000000");
+		endereco.setCidade("Lagarto");
+		endereco.setLogradouro("Rua B");
+		endereco.setNumero(217);
+		endereco.setComplemento("Casa");
+		endereco.setEstado("SE");
+		enderecoDAO.cadastrarEndereco(endereco);
 		//System.out.println("Inserido");
 		//adm = admDao.getAdministrador(18);
 		//System.out.println("ID="+adm.getIdAdministrador()+"Nome="+adm.getNome());
-		admDao.deletarAdministrador(adm);
 		//System.out.println("Deletado");
 		
 	}

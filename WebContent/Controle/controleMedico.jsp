@@ -1,3 +1,5 @@
+<%@page import="DAO.MedicoDAO"%>
+<%@page import="DAO.EnderecoDAO"%>
 <%@page import="model.Endereco"%>
 <%@page import="model.Medico"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -26,7 +28,7 @@ System.out.println("Acao: " + action);
   String email;
   String bairro;
   String logradouro;
-  int numero;
+  String numero;
   String estado;
   String cidade;
   String complemento;
@@ -51,15 +53,17 @@ System.out.println("Acao: " + action);
   
   Endereco endereco = new Endereco();
   Medico medico = new Medico();
+  EnderecoDAO enderecoDAO = new EnderecoDAO();
+  MedicoDAO medicoDAO = new MedicoDAO();
   
   endereco.setBairro(bairro);
   endereco.setComplemento(complemento);
   endereco.setCEP(cep);
   endereco.setCidade(cidade);
   endereco.setLogradouro(logradouro);
-  endereco.setNumero(numero);
+  endereco.setNumero(Integer.parseInt(numero));
   
-  
+  enderecoDAO.cadastrarEndereco(endereco);
  
 //}
 %>
