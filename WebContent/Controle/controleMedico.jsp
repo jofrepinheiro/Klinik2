@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="DAO.MedicoDAO"%>
 <%@page import="DAO.EnderecoDAO"%>
 <%@page import="model.Endereco"%>
@@ -27,6 +28,8 @@ System.out.println("Acao: " + action);
   String telefone;
   String crm;
   String email;
+  String especialidade;
+  String especialidade2;
   String bairro;
   String logradouro;
   String numero;
@@ -42,6 +45,9 @@ System.out.println("Acao: " + action);
   crm = request.getParameter("crm");
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
+  especialidade = request.getParameter("especialidade");
+  especialidade2 = request.getParameter("especialidade2");
+  
   
   bairro = request.getParameter("bairro");
   logradouro = request.getParameter("logradouro");
@@ -54,9 +60,12 @@ System.out.println("Acao: " + action);
   EnderecoDAO enderecoDAO = new EnderecoDAO();
   MedicoDAO medicoDAO = new MedicoDAO();
   
+  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
+  
   medico.setLogin(login);
   medico.setSenha(senha);
-  //medico.setDataNascimento(dataNascimento);
+  medico.setDataNascimento(data);
   medico.setNome(nome);
   medico.setAtivo(1);
   medico.setEmail(email);
@@ -70,10 +79,13 @@ System.out.println("Acao: " + action);
   endereco.setLogradouro(logradouro);
   endereco.setNumero(Integer.parseInt(numero));
   
+  
   enderecoDAO.cadastrarEndereco(endereco);
   medicoDAO.cadastrarMedico(medico);
  
 //}
 %>
+
+
 </body>
 </html>

@@ -29,6 +29,8 @@ public class MedicoDAO {
 			medico.setIdMedico(rs.getInt(1));
 			medico.setCRM(rs.getInt(2));
 			medico.setIdUsuario(rs.getInt(3));
+			medico.setEspecialidade(rs.getString(4));
+			medico.setEspecialidade2(rs.getString(5));
 			usuario = usuarioDAO.getUsuario(medico);
 			medico.setNome(usuario.getNome());
 			medico.setCpf(usuario.getCpf());
@@ -55,7 +57,7 @@ public class MedicoDAO {
 		Connection con = new Conexao().getConnection();
 		Medico medico = new Medico();
 		
-		String sql = "SELECT idMedico, idUsuario, CRM FROM Medico WHERE idMedico=?";
+		String sql = "SELECT idMedico, idUsuario, CRM, especialidade, especialidade2 FROM Medico WHERE idMedico=?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idMedico);
 		ResultSet rs = statement.executeQuery();
@@ -64,10 +66,16 @@ public class MedicoDAO {
 			medico.setIdMedico(rs.getInt(1));
 			medico.setIdUsuario(rs.getInt(2));
 			medico.setCRM(rs.getInt(3));
+			medico.setEspecialidade(rs.getString(4));
+			medico.setEspecialidade2(rs.getString(5));
 		}
 		
 		usuario = usuarioDAO.getUsuario(medico);
 		medico.setNome(usuario.getNome());
+		medico.setCpf(usuario.getCpf());
+		medico.setLogin(usuario.getLogin());
+		medico.setSenha(usuario.getSenha());
+		medico.setDataNascimento(usuario.getDataNascimento());
 		medico.setEmail(usuario.getEmail());
 		medico.setAtivo(usuario.getAtivo());	
 		statement.close();
@@ -86,11 +94,13 @@ public class MedicoDAO {
 		int idUsuario = usuarioDAO.getIdUsuario();
 		
 		
-		String sql = "INSERT INTO MEDICO (idUsuario, CRM) VALUES (?, ?)";
+		String sql = "INSERT INTO MEDICO (idUsuario, CRM, especialidade2, especialidade2) VALUES (?, ?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idUsuario);
 		statement.setInt(2, medico.getCRM());
+		statement.setString(3, medico.getEspecialidade());
+		statement.setString(4, medico.getEspecialidade2());
 
 		statement.executeUpdate();
 		
