@@ -25,6 +25,7 @@ System.out.println("Acao: " + action);
   String nome;
   String cpf;
   String telefone;
+  String crm;
   String email;
   String bairro;
   String logradouro;
@@ -40,6 +41,7 @@ System.out.println("Acao: " + action);
   nome = request.getParameter("nome");
   telefone = request.getParameter("telefone");
   cpf = request.getParameter("cpf");
+  crm = request.getParameter("crm");
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
   
@@ -55,6 +57,12 @@ System.out.println("Acao: " + action);
   Medico medico = new Medico();
   EnderecoDAO enderecoDAO = new EnderecoDAO();
   MedicoDAO medicoDAO = new MedicoDAO();
+  
+  medico.setLogin(login);
+  medico.setSenha(senha);
+  medico.setDataNascimento(dataNascimento);
+  medico.setCpf(cpf);
+  medico.setCRM(crm);
   
   endereco.setBairro(bairro);
   endereco.setComplemento(complemento);
