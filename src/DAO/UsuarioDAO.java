@@ -11,6 +11,26 @@ import model.Usuario;
 import conexao.Conexao;
 
 public class UsuarioDAO {
+	public boolean validarCpf(String cpf) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		String sql = "SELECT NOME FROM USUARIO WHERE CPF=?";
+		
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, cpf);
+		ResultSet rs = statement.executeQuery();
+		String nome = null;
+		while (rs.next()){
+			nome = rs.getString("nome");
+		}
+		statement.close();
+		con.close();
+		if (nome != null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
 	
 	public int getIdUsuario() throws SQLException{
 		int idUsuario = -1;
@@ -22,7 +42,6 @@ public class UsuarioDAO {
 		while (rs.next()){
 			idUsuario = rs.getInt(1);
 		}
-		System.out.println("ID: " + idUsuario);
 		statement.close();
 		con.close();
 		
