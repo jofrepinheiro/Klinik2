@@ -27,7 +27,7 @@ public class MedicoDAO {
 		while (rs.next()){
 			Medico medico = new Medico();
 			medico.setIdMedico(rs.getInt(1));
-			medico.setCRM(rs.getString(2));
+			medico.setCRM(rs.getInt(2));
 			medico.setIdUsuario(rs.getInt(3));
 			usuario = usuarioDAO.getUsuario(medico);
 			medico.setNome(usuario.getNome());
@@ -63,7 +63,7 @@ public class MedicoDAO {
 		while (rs.next()){
 			medico.setIdMedico(rs.getInt(1));
 			medico.setIdUsuario(rs.getInt(2));
-			medico.setCRM(rs.getString(3));
+			medico.setCRM(rs.getInt(3));
 		}
 		
 		usuario = usuarioDAO.getUsuario(medico);
@@ -90,7 +90,7 @@ public class MedicoDAO {
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idUsuario);
-		statement.setString(2, medico.getCRM());
+		statement.setInt(2, medico.getCRM());
 
 		statement.executeUpdate();
 		

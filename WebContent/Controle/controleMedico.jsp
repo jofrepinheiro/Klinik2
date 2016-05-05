@@ -30,8 +30,6 @@ System.out.println("Acao: " + action);
   String bairro;
   String logradouro;
   String numero;
-  String estado;
-  String cidade;
   String complemento;
   String cep;
 
@@ -48,8 +46,6 @@ System.out.println("Acao: " + action);
   bairro = request.getParameter("bairro");
   logradouro = request.getParameter("logradouro");
   numero = request.getParameter("numero");
-  cidade = request.getParameter("cidade");
-  estado = request.getParameter("estado");
   complemento = request.getParameter("complemento");
   cep = request.getParameter("cep");
   
@@ -60,18 +56,22 @@ System.out.println("Acao: " + action);
   
   medico.setLogin(login);
   medico.setSenha(senha);
-  medico.setDataNascimento(dataNascimento);
+  //medico.setDataNascimento(dataNascimento);
+  medico.setNome(nome);
+  medico.setAtivo(1);
+  medico.setEmail(email);
+  medico.setTelefone(telefone);
   medico.setCpf(cpf);
-  medico.setCRM(crm);
+  medico.setCRM(Integer.parseInt(crm));
   
   endereco.setBairro(bairro);
   endereco.setComplemento(complemento);
   endereco.setCEP(cep);
-  endereco.setCidade(cidade);
   endereco.setLogradouro(logradouro);
   endereco.setNumero(Integer.parseInt(numero));
   
   enderecoDAO.cadastrarEndereco(endereco);
+  medicoDAO.cadastrarMedico(medico);
  
 //}
 %>

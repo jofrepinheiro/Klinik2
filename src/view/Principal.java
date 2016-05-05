@@ -39,11 +39,9 @@ public class Principal {
 		
 		endereco.setBairro("Centro");
 		endereco.setCEP("494000000");
-		endereco.setCidade("Lagarto");
 		endereco.setLogradouro("Rua B");
 		endereco.setNumero(217);
 		endereco.setComplemento("Casa");
-		endereco.setEstado("SE");
 		enderecoDAO.cadastrarEndereco(endereco);
 		//System.out.println("Inserido");
 		//adm = admDao.getAdministrador(18);

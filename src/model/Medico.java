@@ -3,7 +3,7 @@ package model;
 public class Medico extends Usuario{
 	private int idMedico;
 	private int idUsuario;
-	private String CRM;
+	private int CRM;
 	
 	public int getIdMedico() {
 		return idMedico;
@@ -17,11 +17,11 @@ public class Medico extends Usuario{
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public String getCRM() {
+	public int getCRM() {
 		return CRM;
 	}
-	public void setCRM(String cRM) {
-		CRM = cRM;
+	public void setCRM(int CRM) {
+		this.CRM = CRM;
 	}
 	
 	

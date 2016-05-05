@@ -7,21 +7,7 @@ public class Endereco {
 	private int numero;
 	private String CEP;
 	private String complemento;
-	private String estado;
-	private String cidade;
-	
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
+
 	public int getIdEndereco() {
 		return idEndereco;
 	}
