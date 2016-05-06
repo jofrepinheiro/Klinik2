@@ -60,10 +60,9 @@ public class UsuarioDAO {
 					return -1;
 				}
 			}
-			}
-			
+			}	
 		}
-	
+		
 	public Usuario loginUsuario(String login, String senha) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		String sql = "SELECT * FROM USUARIO WHERE login=? and senha=? and ativo=1";

@@ -119,8 +119,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                        	<th>Alterar</th>>
                                             <th>Login</th>
-											<th>Senha</th>
 											<th>Nascimento</th>
                                             <th>Nome</th>
 											<th>CPF</th>
@@ -132,8 +132,8 @@
                                     </thead>
                                     <tbody>
 										<tr class="odd gradeX">
+											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
                                             <td>drjp</td>
-                                            <td>joelmna123</td>
 											<td>11/04/1930</td>
 											<td>Dr. João Paulo</td>
 											<td>012.345.228-90</td>
