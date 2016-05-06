@@ -9,6 +9,7 @@ import DAO.AdministradorDAO;
 import DAO.EnderecoDAO;
 import DAO.MedicoDAO;
 import DAO.SecretarioDAO;
+import DAO.UsuarioDAO;
 import model.Administrador;
 import model.Endereco;
 import model.Medico;
@@ -34,15 +35,23 @@ public class Principal {
 //		admDao.cadastrarAdministrador(adm);
 //		System.out.println("teste");
 		
-		Endereco endereco = new Endereco();
-		EnderecoDAO enderecoDAO = new EnderecoDAO();
-		
-		endereco.setBairro("Centro");
-		endereco.setCEP("494000000");
-		endereco.setLogradouro("Rua B");
-		endereco.setNumero(217);
-		endereco.setComplemento("Casa");
-		enderecoDAO.cadastrarEndereco(endereco);
+//		Endereco endereco = new Endereco();
+//		EnderecoDAO enderecoDAO = new EnderecoDAO();
+//		
+//		endereco.setBairro("Centro");
+//		endereco.setCEP("494000000");
+//		endereco.setLogradouro("Rua B");
+//		endereco.setNumero(217);
+//		endereco.setComplemento("Casa");
+//		enderecoDAO.cadastrarEndereco(endereco);
+		UsuarioDAO usu = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		usuario = usu.loginUsuario("John", "123456");
+		if(usuario != null){
+			System.out.println(usuario.getNome());
+		}else{
+			System.out.println("NUlo");
+		}
 		//System.out.println("Inserido");
 		//adm = admDao.getAdministrador(18);
 		//System.out.println("ID="+adm.getIdAdministrador()+"Nome="+adm.getNome());

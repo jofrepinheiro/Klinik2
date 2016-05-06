@@ -2,7 +2,27 @@
 <html lang="en">
 
 <head>
+	<script type="text/javascript" language="javascript">
+		function valida_form(){
+			nome = document.forms["formCadastro"]["nome"].value;
+			senha = document.forms["formCadastro"]["senha"].value;
+			login = document.forms["formCadastro"]["login"].value;
+			dataNascimento = document.forms["formCadastro"]["dataNascimento"].value;
+			cpf = document.forms["formCadastro"]["cpf"].value;
+			telefone = document.forms["formCadastro"]["telefone"].value;
+			logradouro = document.forms["formCadastro"]["logradouro"].value;
+			bairro = document.forms["formCadastro"]["bairro"].value;
+			complemento = document.forms["formCadastro"]["complemento"].value;
+			numero = document.forms["formCadastro"]["numero"].value;
 
+			if(nome == "" || senha == "" || cpf =="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
+				alert("Por favor, preencha todos os campos obrigatórios");
+				return false
+			}else{
+				document.formCadastro.submit();
+			}
+		}
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -177,7 +197,7 @@
 									</div>
 								</div>	
                             </div>
-								<button type="submit"  class="btn btn-default">Enviar</button>
+								<button type="button" onclick="valida_form(this);" class="btn btn-default">Enviar</button>
 								<button type="reset"  class="btn btn-default">Limpar Campos</button>
 							
 							</form>

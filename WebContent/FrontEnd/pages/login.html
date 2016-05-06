@@ -2,7 +2,21 @@
 <html lang="en">
 
 <head>
-
+	<script type="text/javascript" language="javascript">
+	
+	
+		function valida_form(){
+			senha = document.forms["formLogin"]["senha"].value;
+			login = document.forms["formLogin"]["login"].value;
+			if(login=="" || senha==""){
+				alert("Por favor, preencha login e senha");
+				return false;
+			}else{
+				alert("Teste2");
+				document.formLogin.submit();
+			}
+		}
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,16 +53,17 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Logar na Klinik</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form method="post" id="formLogin" role="form" name="formLogin" action="../../Controle/controleLogin.jsp">
+                            <input type="hidden" name="action" value="Logar">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="Login" id="login" name="login" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Senha" id="senha" name="senha" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -56,7 +71,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="indexAdmin.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <a class="btn btn-lg btn-success btn-block" onclick="valida_form(this);">Login</a>
                             </fieldset>
                         </form>
                     </div>

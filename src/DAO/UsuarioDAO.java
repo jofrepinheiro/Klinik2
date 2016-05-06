@@ -22,6 +22,7 @@ public class UsuarioDAO {
 		while (rs.next()){
 			nome = rs.getString("nome");
 		}
+		
 		statement.close();
 		con.close();
 		if (nome != null){
@@ -29,6 +30,34 @@ public class UsuarioDAO {
 		}else{
 			return true;
 		}
+	}
+	
+	public Usuario loginUsuario(String login, String senha) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		String sql = "SELECT * FROM USUARIO WHERE login=? and senha=? and ativo=1";
+		Usuario usuario = new Usuario();
+		usuario.setAtivo(2);
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, login);
+		statement.setString(2, senha);
+		ResultSet rs = statement.executeQuery();
+		while (rs.next()){
+			usuario.setAtivo(rs.getInt("ativo"));
+			usuario.setNome(rs.getString("nome"));
+			usuario.setDataNascimento(rs.getDate("dataNasc"));
+			usuario.setIdUsuario(rs.getInt("idUsuario"));
+			usuario.setLogin(rs.getString("login"));
+			usuario.setTelefone(rs.getString("telefone"));
+			usuario.setEmail(rs.getString("email"));
+		}
+		statement.close();
+		con.close();
+		if(usuario.getAtivo()==2){
+			return null;
+		}else{
+			return usuario;
+		}
+				
 	}
 	
 	
