@@ -74,6 +74,35 @@ public class SecretarioDAO {
 		return secretario;
 	}
 	
+	public Secretario getSecretarioUsuario(int idUsuario) throws SQLException{
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		Connection con = new Conexao().getConnection();
+		Secretario secretario = new Secretario();
+		
+		String sql = "SELECT idSecretario, idUsuario FROM SECRETARIO WHERE idUsuario=?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idUsuario);
+		ResultSet rs = statement.executeQuery();
+		if(!rs.next()){
+			return null;
+		}else{
+			while (rs.next()){
+				secretario.setIdSecretario(rs.getInt(1));
+				secretario.setIdUsuario(rs.getInt(2));
+			}
+			
+			usuario = usuarioDAO.getUsuario(secretario);
+			secretario.setNome(usuario.getNome());
+			secretario.setEmail(usuario.getEmail());
+			secretario.setAtivo(usuario.getAtivo());	
+			statement.close();
+			con.close();
+			
+			return secretario;
+		}
+	}
+	
 	public void cadastrarSecretario(Secretario secretario) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

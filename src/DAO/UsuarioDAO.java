@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.Administrador;
+import model.Medico;
 import model.Secretario;
 import model.Usuario;
 import conexao.Conexao;
@@ -32,6 +34,36 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public int getTipoUsuario(int idUsuario) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		Secretario secretario;
+		Medico medico;
+		Administrador administrador;
+		SecretarioDAO secretarioDAO = new SecretarioDAO();
+		MedicoDAO medicoDAO = new MedicoDAO();
+		AdministradorDAO administradorDAO = new AdministradorDAO();
+		//medico.setIdMedico(-1);
+		//secretario.setIdSecretario(-1);
+		//administrador.setIdAdministrador(-1);
+		medico = medicoDAO.getMedicoUsuario(idUsuario);
+		secretario = secretarioDAO.getSecretarioUsuario(idUsuario);
+		administrador = administradorDAO.getAdministradorUsuario(idUsuario);
+		if (medico != null){
+			return 0;
+		}else{
+			if(secretario != null){
+				return 1;
+			}else{
+				if(administrador != null){
+					return 2;
+				}else{
+					return -1;
+				}
+			}
+			}
+			
+		}
+	
 	public Usuario loginUsuario(String login, String senha) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		String sql = "SELECT * FROM USUARIO WHERE login=? and senha=? and ativo=1";
@@ -57,7 +89,6 @@ public class UsuarioDAO {
 		}else{
 			return usuario;
 		}
-				
 	}
 	
 	

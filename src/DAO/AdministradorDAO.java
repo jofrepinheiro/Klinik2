@@ -58,6 +58,35 @@ public class AdministradorDAO {
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idAdministrador);
 		ResultSet rs = statement.executeQuery();
+		if(!rs.next()){
+			return null;
+		}else{
+			while (rs.next()){
+				administrador.setIdAdministrador(rs.getInt(1));
+				administrador.setIdUsuario(rs.getInt(2));
+			}
+			
+			usuario = usuarioDAO.getUsuario(administrador);
+			administrador.setNome(usuario.getNome());
+			administrador.setEmail(usuario.getEmail());
+			administrador.setAtivo(usuario.getAtivo());	
+			statement.close();
+			con.close();
+			
+			return administrador;
+		}
+	}
+	
+	public Administrador getAdministradorUsuario(int idUsuario) throws SQLException{
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		Connection con = new Conexao().getConnection();
+		Administrador administrador = new Administrador();
+		
+		String sql = "SELECT idAdministrador, idUsuario FROM ADMINISTRADOR WHERE idUsuario=?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idUsuario);
+		ResultSet rs = statement.executeQuery();
 		
 		while (rs.next()){
 			administrador.setIdAdministrador(rs.getInt(1));

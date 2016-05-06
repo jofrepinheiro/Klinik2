@@ -33,9 +33,18 @@ if (action.equalsIgnoreCase("Logar")){
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   usuario = usuarioDAO.loginUsuario(login, senha);
   if(usuario != null){
-	  //Redireciona pra pagina inicial do Usuario
+	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
+	  if(tipoUsuario == 0){
+		  response.sendRedirect("../FrontEnd/pages/indexMed.html");
+	  }
+	  if(tipoUsuario == 1){
+		  response.sendRedirect("../FrontEnd/pages/indexSec.html");
+	  }
+	  if(tipoUsuario == 2){
+		  response.sendRedirect("../FrontEnd/pages/indexAdmin.html");
+	  }
   }else{
-	  response.sendRedirect("../FrontEnd/cadastroMedico.html");
+	  response.sendRedirect("../FrontEnd/pages/login.html?erro=1");
 	 // request.setAttribute("erro","ok"); 
 
 	  //RequestDispatcher dispatcher = request.getRequestDispatcher("controleMedico.jsp"); 

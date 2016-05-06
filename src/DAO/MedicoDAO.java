@@ -51,6 +51,41 @@ public class MedicoDAO {
 		return medicoList;	
 	}
 	
+	public Medico getMedicoUsuario(int idUsuario) throws SQLException{
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario();
+		Connection con = new Conexao().getConnection();
+		Medico medico = new Medico();
+		
+		String sql = "SELECT idMedico, idUsuario, CRM, especialidade, especialidade2 FROM Medico WHERE idUsuario=?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idUsuario);
+		ResultSet rs = statement.executeQuery();
+		if(!rs.next()){
+			return null;
+		}else{
+			while (rs.next()){
+				medico.setIdMedico(rs.getInt(1));
+				medico.setIdUsuario(rs.getInt(2));
+				medico.setCRM(rs.getInt(3));
+				medico.setEspecialidade(rs.getString(4));
+				medico.setEspecialidade2(rs.getString(5));
+			}
+			
+			usuario = usuarioDAO.getUsuario(medico);
+			medico.setNome(usuario.getNome());
+			medico.setCpf(usuario.getCpf());
+			medico.setLogin(usuario.getLogin());
+			medico.setSenha(usuario.getSenha());
+			medico.setDataNascimento(usuario.getDataNascimento());
+			medico.setEmail(usuario.getEmail());
+			medico.setAtivo(usuario.getAtivo());	
+			statement.close();
+			con.close();
+		return medico;
+		}
+	}
+	
 	public Medico getMedico(int idMedico) throws SQLException{
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario usuario = new Usuario();
