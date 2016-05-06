@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
@@ -28,10 +30,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<% 
+    
+    
+%>
 
 </head>
 
 <body>
+
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -111,37 +119,29 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                        	<th>Alterar</th>>
                                             <th>Login</th>
-											<th>Senha</th>
 											<th>Nascimento</th>
                                             <th>Nome</th>
 											<th>CPF</th>
 											<th>Telefone</th>
                                             <th>Email</th> 
-											<th>Endereço</th>
+											<th>Endere�o</th>
+											<th>Perfil</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>railan</td>
-                                            <td>password</td>
-											<td>11/04/1900</td>
-											<td>Dr. Railan Cheetos</td>
-											<td>012.345.678-90</td>
-											<td>(79) 3100-3121</td>
-											<td>railan@klinik.com</td>
-											<td>Rua Maranata de Lagarto, 2340. Bairro Centro</td>
-                                        </tr>
-										
 										<tr class="odd gradeX">
+											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
                                             <td>drjp</td>
-                                            <td>joelmna123</td>
 											<td>11/04/1930</td>
 											<td>Dr. João Paulo</td>
 											<td>012.345.228-90</td>
 											<td>(79) 3110-3121</td>
 											<td>jpcalypso@klinik.com</td>
 											<td>Rua dos Aflitos, 20. Bairro Luzia</td>
+											<td>Adm</td>
+											
                                         </tr>
                                     </tbody>
                                 </table>
