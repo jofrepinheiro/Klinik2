@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - ClÃ­nica MÃ©dica</title>
+    <title>Klinik - Clínica Médica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,6 +30,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<% 
+    
+    
+%>
 
 </head>
 
@@ -120,21 +126,11 @@
 											<th>CPF</th>
 											<th>Telefone</th>
                                             <th>Email</th> 
-											<th>EndereÃ§o</th>
+											<th>Endereço</th>
+											<th>Perfil</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>railan</td>
-                                            <td>password</td>
-											<td>11/04/1900</td>
-											<td>Dr. Railan Cheetos</td>
-											<td>012.345.678-90</td>
-											<td>(79) 3100-3121</td>
-											<td>railan@klinik.com</td>
-											<td>Rua Maranata de Lagarto, 2340. Bairro Centro</td>
-                                        </tr>
-										
 										<tr class="odd gradeX">
                                             <td>drjp</td>
                                             <td>joelmna123</td>
@@ -144,6 +140,8 @@
 											<td>(79) 3110-3121</td>
 											<td>jpcalypso@klinik.com</td>
 											<td>Rua dos Aflitos, 20. Bairro Luzia</td>
+											<td>Adm</td>
+											
                                         </tr>
                                     </tbody>
                                 </table>

@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - Clínica Médica</title>
+    <title>Klinik - Cl�nica M�dica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,11 +32,10 @@
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 10px">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -71,11 +69,11 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexAdmin.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
                         <li>
-                            <a href="listaUsuario.jsp"><i class="fa fa-table fa-fw"></i> Gerenciamento</a> 
+                            <a href="listaUsuario.html"><i class="fa fa-table fa-fw"></i> Gerenciamento</a> 
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
@@ -88,7 +86,8 @@
                                 </li>
 								<li>
                                     <a href="cadastroSec.html">Secretário</a>
-                                </li>	
+                                </li>
+							</ul>
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>
@@ -97,40 +96,67 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-        <div id="page-wrapper" style="padding-top: 5%">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			  </ol>
-
-			  <!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-				  <img src="img/slider/slider1.png" alt="...">
-				</div>
-				<div class="item">
-				  <img src="img/slider/slider2.jpg" alt="...">
-				</div>
-				<div class="item">
-				  <img src="img/slider/slider3.jpg" alt="...">
-				</div>
-			</div>
-
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				  </a>
-				</div>     
-				</div>
+	</div>
+	<div>
+        <div id="page-wrapper"  style="padding-top: 5%">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Lista de Usuários
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Login</th>
+											<th>Senha</th>
+											<th>Nascimento</th>
+                                            <th>Nome</th>
+											<th>CPF</th>
+											<th>Telefone</th>
+                                            <th>Email</th> 
+											<th>Endereço</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>railan</td>
+                                            <td>password</td>
+											<td>11/04/1900</td>
+											<td>Dr. Railan Cheetos</td>
+											<td>012.345.678-90</td>
+											<td>(79) 3100-3121</td>
+											<td>railan@klinik.com</td>
+											<td>Rua Maranata de Lagarto, 2340. Bairro Centro</td>
+                                        </tr>
+										
+										<tr class="odd gradeX">
+                                            <td>drjp</td>
+                                            <td>joelmna123</td>
+											<td>11/04/1930</td>
+											<td>Dr. João Paulo</td>
+											<td>012.345.228-90</td>
+											<td>(79) 3110-3121</td>
+											<td>jpcalypso@klinik.com</td>
+											<td>Rua dos Aflitos, 20. Bairro Luzia</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -144,13 +170,21 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
 
 </body>
 
