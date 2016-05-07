@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <head>
+<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		if(perfil != "0"){
+			  response.sendRedirect("login.html?erro=2");
+		}
 
+%>
 	<script type="text/javascript" language="javascript">
 		function valida_form(){
 			nome = document.forms["formCadastro"]["nome"].value;

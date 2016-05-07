@@ -8,6 +8,13 @@
 <html lang="en">
 
 <head>
+<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		if(perfil != "0"){
+			  response.sendRedirect("login.html?erro=2");
+		}
+
+%>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,7 +70,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Nome de Usuário <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>

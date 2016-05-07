@@ -28,19 +28,18 @@ if (action.equalsIgnoreCase("Logar")){
   // dados informados no formulário
   login = request.getParameter("login");
   senha = request.getParameter("senha");
-  
+
   Usuario usuario = new Usuario();
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   usuario = usuarioDAO.loginUsuario(login, senha);
+
   if(usuario != null){
+	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  session.putValue("loginUsuario", usuario.getNome()); //Grava a session com o Login
 	  session.putValue("nomeUsuario", usuario.getNome()); //Grava a session com o Login
 	  session.putValue("idUsuario", usuario.getIdUsuario()); //Grava a session com a Senha
 	 // session.setAttribute("Nome",objeto);
 	  //SeuObjeto = session.getAttribute("Nome");
-	
-	
-	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  if(tipoUsuario == 0){
 		  session.putValue("perfilUsuario", "0");
 		  response.sendRedirect("../FrontEnd/pages/indexAdmin.jsp");
@@ -55,11 +54,6 @@ if (action.equalsIgnoreCase("Logar")){
 	  }
   }else{
 	  response.sendRedirect("../FrontEnd/pages/login.html?erro=1");
-	 // request.setAttribute("erro","ok"); 
-
-	  //RequestDispatcher dispatcher = request.getRequestDispatcher("controleMedico.jsp"); 
-	 //  dispatcher.forward(request,response); 
-
   }
 }
 

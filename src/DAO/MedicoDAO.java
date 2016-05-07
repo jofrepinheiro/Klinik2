@@ -61,9 +61,7 @@ public class MedicoDAO {
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idUsuario);
 		ResultSet rs = statement.executeQuery();
-		if(!rs.next()){
-			return null;
-		}else{
+		
 			while (rs.next()){
 				medico.setIdMedico(rs.getInt(1));
 				medico.setIdUsuario(rs.getInt(2));
@@ -83,7 +81,7 @@ public class MedicoDAO {
 			statement.close();
 			con.close();
 		return medico;
-		}
+		
 	}
 	
 	public Medico getMedico(int idMedico) throws SQLException{

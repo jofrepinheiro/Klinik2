@@ -48,13 +48,20 @@ public class UsuarioDAO {
 		medico = medicoDAO.getMedicoUsuario(idUsuario);
 		secretario = secretarioDAO.getSecretarioUsuario(idUsuario);
 		administrador = administradorDAO.getAdministradorUsuario(idUsuario);
-		if (administrador != null){
+		System.out.println("Teste: " +administrador.getIdAdministrador());
+		System.out.println("Teste2: " +secretario.getIdSecretario());
+		System.out.println("Teste3: " +medico.getIdMedico());
+
+		if (administrador.getIdAdministrador() != 0){
+			System.out.println("Adm" + administrador.getIdAdministrador());
 			return 0;
 		}else{
-			if(secretario != null){
+			if(secretario.getIdSecretario() != 0){
+				System.out.println("Secretario");
 				return 1;
 			}else{
-				if(medico != null){
+				if(medico.getIdMedico() != 0){
+					System.out.println("medico");
 					return 2;
 				}else{
 					return -1;

@@ -84,9 +84,7 @@ public class SecretarioDAO {
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idUsuario);
 		ResultSet rs = statement.executeQuery();
-		if(!rs.next()){
-			return null;
-		}else{
+		
 			while (rs.next()){
 				secretario.setIdSecretario(rs.getInt(1));
 				secretario.setIdUsuario(rs.getInt(2));
@@ -100,7 +98,6 @@ public class SecretarioDAO {
 			con.close();
 			
 			return secretario;
-		}
 	}
 	
 	public void cadastrarSecretario(Secretario secretario) throws SQLException{
