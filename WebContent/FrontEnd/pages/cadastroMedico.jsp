@@ -10,6 +10,7 @@
 			dataNascimento = document.forms["formCadastro"]["dataNascimento"].value;
 			cpf = document.forms["formCadastro"]["cpf"].value;
 			crm = document.forms["formCadastro"]["crm"].value;
+			
 			telefone = document.forms["formCadastro"]["telefone"].value;
 			logradouro = document.forms["formCadastro"]["logradouro"].value;
 			bairro = document.forms["formCadastro"]["bairro"].value;
@@ -194,7 +195,6 @@
 										<div class="form-group">
 											<label>Especialidade Principal</label>
 											<select class="form-control" id="sel1" name="especialidade" id="especialidade">
-												<option value="NULL">--</option>
 												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>
 												<option value="ONCO">Oncologia</option>

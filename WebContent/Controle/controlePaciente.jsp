@@ -47,9 +47,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
   complemento = request.getParameter("complemento");
   cep = request.getParameter("cep");
   
+  System.out.println(nome + cpf + sexo + dataNascimento);
+  
   Endereco endereco = new Endereco();
   Paciente paciente = new Paciente();
-  
+
   EnderecoDAO enderecoDAO = new EnderecoDAO();
   PacienteDAO pacienteDAO = new PacienteDAO();
   

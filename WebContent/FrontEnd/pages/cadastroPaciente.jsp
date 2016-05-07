@@ -1,7 +1,31 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
+
+	<script type="text/javascript" language="javascript">
+			function valida_form(){
+				nome = document.forms["formCadastro"]["nome"].value;
+				cpf = document.forms["formCadastro"]["cpf"].value;
+				dataNascimento = document.forms["formCadastro"]["dataNascimento"].value;
+				telefone = document.forms["formCadastro"]["telefone"].value;
+				email = document.forms["formCadastro"]["email"].value;
+				
+				logradouro = document.forms["formCadastro"]["logradouro"].value;
+				bairro = document.forms["formCadastro"]["bairro"].value;
+				complemento = document.forms["formCadastro"]["complemento"].value;
+				numero = document.forms["formCadastro"]["numero"].value;
+	
+				if(nome == "" || cpf =="" || dataNascimento=="" || telefone=="" || email=="" ||  logradouro=="" || bairro=="" || numero==""){
+					alert("Por favor, preencha todos os campos obrigat�rios");
+					return false
+				}else{
+					document.formCadastro.submit();
+				}
+			}
+	</script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +33,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - Clínica Médica</title>
+    <title>Klinik - Cl�nica M�dica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,10 +76,10 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Olá, Secretário <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  Ol�, Secret�rio <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informa��es </a>
                         </li>
 							 <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -120,22 +144,23 @@
 							Cadastro de Paciente
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form method="post" role="form" name="formCadastro" id="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controlePaciente.jsp">
+								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>Nome</label>
-                                            <input class="form-control" placeholder="Ex: Eduardo Stark">
+                                            <input name="nome" id="nome" class="form-control" placeholder="Ex: Eduardo Stark">
                                         </div>
 										
 										<div class="form-group">
                                             <label>CPF</label>
-                                            <input type="password" class="form-control" placeholder="XXX.XXX.XXX-XX">
+                                            <input name="cpf" id="cpf" class="form-control" placeholder="XXX.XXX.XXX-XX">
                                         </div>
 										
 										<div class = "form-group">
 										<label>Sexo</label>
-											<select class="form-control" name="uf" id="uf">
+											<select name="sexo" id="sexo" class="form-control">
 												<option value="F">Feminino</option>
 												<option value="M">Masculino</option>												
 											</select>
@@ -143,18 +168,18 @@
 										
 										<div class="form-group">
                                             <label>Data de Nascimento</label>
-                                            <input class="form-control" placeholder="DD/MM/AAAA">
+                                            <input name="dataNascimento" id="dataNascimento" class="form-control" placeholder="DD/MM/AAAA">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Telefone</label>
-                                            <input class="form-control" placeholder="(XX) X XXXX XXXX">
+                                            <input name="telefone" id="telefone" class="form-control" placeholder="(XX) X XXXX XXXX">
                                         </div>
 										
 										
 										<div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" placeholder="john@doe.com">
+                                            <input name="email" id="email" class="form-control" placeholder="john@doe.com">
                                         </div>
 
                                 </div>
@@ -163,71 +188,31 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label>CEP</label>
-										<input class="form-control" placeholder="Ex: rot-g1">
+										<input name="cep" id="cep" class="form-control" placeholder="Ex: rot-g1">
                                     </div>
 									
 									<div class="form-group">
 										<label>Logradouro</label>
-										<input class="form-control">
+										<input name="logradouro" id="logradouro" class="form-control">
 									</div>
 									
 									<div class="form-group">
-										<label>Número</label>
-										<input class="form-control" placeholder="">
+										<label>N�mero</label>
+										<input name="numero" id="numero" class="form-control" placeholder="">
 									</div>
 									
 									<div class="form-group">
 										<label>Bairro</label>
-										<input class="form-control" placeholder="Ex: rot-g1">
+										<input name="bairro" id="bairro" class="form-control" placeholder="Ex: rot-g1">
 									</div>									
 									
 									<div class="form-group">
 										<label>Complemento</label>
-										<input class="form-control" placeholder="Ex: rot-g1">
+										<input name="complemento" id="complemento" class="form-control" placeholder="Ex: rot-g1">
 									</div>
 									
 									
-									<div class = "form-group">
-										<label>Estado</label>
-											<select class="form-control" name="uf" id="uf">
-												<option value="">Selecione</option>
-												<option value="AC">Acre</option>
-												<option value="AL">Alagoas</option>
-												<option value="AM">Amazonas</option>
-												<option value="AP">Amapá</option>
-												<option value="BA">Bahia</option>
-												<option value="CE">Ceará</option>
-												<option value="DF">Distrito Federal</option>
-												<option value="ES">Espírito Santo</option>
-												<option value="GO">Goiás</option>
-												<option value="MA">Maranhão</option>
-												<option value="MG">Minas Gerais</option>
-												<option value="MS">Mato Grosso do Sul</option>
-												<option value="MT">Mato Grosso</option>
-												<option value="PA">Pará</option>
-												<option value="PB">Paraíba</option>
-												<option value="PE">Pernambuco</option>
-												<option value="PI">Piauí</option>
-												<option value="PR">Paraná</option>
-												<option value="RJ">Rio de Janeiro</option>
-												<option value="RN">Rio Grande do Norte</option>
-												<option value="RS">Rio Grande do Sul</option>
-												<option value="RO">Rondônia</option>
-												<option value="RR">Roraima</option>
-												<option value="SC">Santa Catarina</option>
-												<option value="SE">Sergipe</option>
-												<option value="SP">São Paulo</option>
-												<option value="TO">Tocantins</option>
-											</select>
-									</div>
-									
-									<div class="form-group">
-										<label>Cidade</label>
-										<input class="form-control" placeholder="Ex: rot-g1">
-									</div>
-								</div>
                             </div>
-								<button type="submit"  class="btn btn-default">Enviar</button>
 								<button type="reset"  class="btn btn-default">Limpar Campos</button>
 							
 							</form>
