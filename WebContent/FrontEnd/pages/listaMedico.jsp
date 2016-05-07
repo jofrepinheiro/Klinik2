@@ -1,6 +1,7 @@
-<%@page import="model.Secretario"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.MedicoDAO"%>
 <%@page import="DAO.SecretarioDAO"%>
+<%@page import="model.Medico"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - Clínica Médica</title>
+    <title>Klinik - Clinica Medica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,11 +34,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 <% 
-	ArrayList<Secretario> secretarioList = new ArrayList<>();
-    SecretarioDAO secretarioDAO = new SecretarioDAO();
-    secretarioList = secretarioDAO.getSecretarioList();
+	ArrayList<Medico> medicoList = new ArrayList<>();
+    MedicoDAO medicoDAO = new MedicoDAO();
+    medicoList = medicoDAO.getMedicoList();
     
 %>
 
@@ -92,10 +93,10 @@
                                     <a href="listaAdmin.html">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.html">Médico</a>
+                                    <a href="#">Médico</a>
                                 </li>
 								<li>
-                                    <a href="#">Secretário</a>
+                                    <a href="listaSec.html">Secretário</a>
                                 </li>	
 							</ul>
                         </li>
@@ -103,7 +104,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroAdmin.html">Administrador</a>
+                                    <a href="cadastroMedico.html">Administrador</a>
                                 </li>
                                 <li>
                                     <a href="cadastroMedico.html">Médico</a>
@@ -128,7 +129,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Lista de Secretários
+                            Lista de Médicos
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -141,21 +142,22 @@
                                             <th>Nome</th>
 											<th>CPF</th>
 											<th>Telefone</th>
-                                            <th>Email</th> 
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
-                                    <% for(int i=0; i < secretarioList.size();i++){%>
+                                    <% for(int i=0; i < medicoList.size();i++){%>
                                     <tbody>
 										<tr class="odd gradeX">
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-											<td><%=secretarioList.get(i).getDataNascimento()%></td>
-											<td><%=secretarioList.get(i).getNome()%></td>
-											<td><%=secretarioList.get(1).getCpf()%></td>
-											<td><%=secretarioList.get(1).getTelefone()%></td>
-											<td><%=secretarioList.get(1).getEmail()%></td>											
+											<td><%=medicoList.get(i).getDataNascimento()%></td>
+											<td><%=medicoList.get(i).getNome()%></td>
+											<td><%=medicoList.get(1).getCpf()%></td>
+											<td><%=medicoList.get(1).getTelefone()%></td>
+											<td><%=medicoList.get(1).getEmail()%></td>											
                                         </tr>
                                     </tbody>
                                     <%} %>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
