@@ -72,6 +72,8 @@ if (action.equalsIgnoreCase("Logout")){
 	  session.putValue("perfilUsuario", null); 
 	  session.putValue("nomeUsuario", null); 
 	  session.putValue("loginUsuario", null); 
+	  response.sendRedirect("../FrontEnd/pages/login.html");
+
 }
 %>
 

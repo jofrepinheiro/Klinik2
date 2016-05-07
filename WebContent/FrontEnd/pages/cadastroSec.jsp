@@ -67,7 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Klinik</a>
+                <a class="navbar-brand" href="indexSec.jsp">Klinik</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -93,7 +93,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexAdmin.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexSec.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
                         <li>
