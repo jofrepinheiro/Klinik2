@@ -5,7 +5,7 @@
 <head>
 <%	  
 		String perfil = (String) session.getAttribute("perfilUsuario");
-		if(perfil != "0"){
+		if(perfil != "2"){
 			  response.sendRedirect("login.html?erro=2");
 		}
 
