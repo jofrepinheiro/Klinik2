@@ -59,7 +59,7 @@
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
-                        <li><a href="controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../../Controle/controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
