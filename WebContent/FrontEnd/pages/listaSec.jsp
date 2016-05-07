@@ -1,3 +1,6 @@
+<%@page import="model.Secretario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.SecretarioDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,7 +35,9 @@
     <![endif]-->
     
 <% 
-    
+	ArrayList<Secretario> secretarioList = new ArrayList<>();
+    SecretarioDAO secretarioDAO = new SecretarioDAO();
+    secretarioList = secretarioDAO.getSecretarioList();
     
 %>
 
@@ -131,32 +136,28 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Alterar</th>>
-                                            <th>Login</th>
+                                        	<th>Alterar</th>
 											<th>Nascimento</th>
                                             <th>Nome</th>
 											<th>CPF</th>
 											<th>Telefone</th>
                                             <th>Email</th> 
-											<th>Endereço</th>
-											<th>Perfil</th>
                                         </tr>
                                     </thead>
+                                    <% for(int i=0; i < secretarioList.size();i++){%>
                                     <tbody>
 										<tr class="odd gradeX">
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-                                            <td>drjp</td>
-											<td>11/04/1930</td>
-											<td>Dr. JoÃ£o Paulo</td>
-											<td>012.345.228-90</td>
-											<td>(79) 3110-3121</td>
-											<td>jpcalypso@klinik.com</td>
-											<td>Rua dos Aflitos, 20. Bairro Luzia</td>
-											<td>Adm</td>
-											
+											<td><%=secretarioList.get(i).getDataNascimento()%></td>
+											<td><%=secretarioList.get(i).getNome()%></td>
+											<td><%=secretarioList.get(1).getCpf()%></td>
+											<td><%=secretarioList.get(1).getTelefone()%></td>
+											<td><%=secretarioList.get(1).getEmail()%></td>											
                                         </tr>
                                     </tbody>
+                                    <%} %>
                                 </table>
+                                <%=secretarioList.get(1).getNome()%>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
