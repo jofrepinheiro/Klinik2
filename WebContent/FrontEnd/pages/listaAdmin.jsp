@@ -91,10 +91,10 @@
                                     <a href="listaAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.jsp">Médico</a>
+                                    <a href="listaMedico.jsp">Medico</a>
                                 </li>
 								<li>
-                                    <a href="listaSec.jsp">Secretário</a>
+                                    <a href="listaSec.jsp">Secretario</a>
                                 </li>	
 							</ul>
                         </li>
@@ -105,10 +105,10 @@
                                     <a href="cadastroAdmin.html">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroMedico.html">Médico</a>
+                                    <a href="cadastroMedico.html">Medico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSec.html">Secretário</a>
+                                    <a href="cadastroSec.html">Secretario</a>
                                 </li>	
 							</ul>
                             <!-- /.nav-second-level -->
@@ -135,15 +135,12 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Alterar</th>>
-                                            <th>Login</th>
+                                        	<th>Alterar</th>
 											<th>Nascimento</th>
                                             <th>Nome</th>
 											<th>CPF</th>
 											<th>Telefone</th>
-                                            <th>Email</th> 
-											<th>Endere�o</th>
-											<th>Perfil</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
                                     <% for(int i=0; i < admList.size();i++){%>

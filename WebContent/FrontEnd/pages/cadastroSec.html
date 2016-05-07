@@ -3,7 +3,7 @@
 
 <head>
 	<script type="text/javascript" language="javascript">
-		function valida_form(){ alert("Aqui1");
+		function valida_form(){ 
 
 			nome = document.forms["formCadastro"]["nome"].value;
 			senha = document.forms["formCadastro"]["senha"].value;
@@ -15,7 +15,6 @@
 			bairro = document.forms["formCadastro"]["bairro"].value;
 			complemento = document.forms["formCadastro"]["complemento"].value;
 			numero = document.forms["formCadastro"]["numero"].value;
-alert("Aqui");
 			if(nome == "" || senha == "" || cpf =="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
 				alert("Por favor, preencha todos os campos obrigatórios");
 				return false
@@ -97,7 +96,18 @@ alert("Aqui");
                         </li>
 						
                         <li>
-                            <a href="listaUsuario.html"><i class="fa fa-table fa-fw"></i> Gerenciamento</a> 
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="listaAdmin.jsp">Administrador</a>
+                                </li>
+                                <li>
+                                    <a href="listaMedico.jsp">Médico</a>
+                                </li>
+								<li>
+                                    <a href="listaSec.jsp">Secretário</a>
+                                </li>	
+							</ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
