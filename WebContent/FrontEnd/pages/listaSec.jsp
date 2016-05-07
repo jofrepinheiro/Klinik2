@@ -89,13 +89,13 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaAdmin.html">Administrador</a>
+                                    <a href="listaAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.html">Médico</a>
+                                    <a href="listaMedico.jsp">Médico</a>
                                 </li>
 								<li>
-                                    <a href="#">Secretário</a>
+                                    <a href="listaSec.jsp">Secretário</a>
                                 </li>	
 							</ul>
                         </li>
