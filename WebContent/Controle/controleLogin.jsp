@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<% 
+<%
 
 String action = request.getParameter("action"); 
 
@@ -42,15 +42,15 @@ if (action.equalsIgnoreCase("Logar")){
 	
 	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  if(tipoUsuario == 0){
-		  session.putValue("perfilUsuario", 0); 
+		  session.putValue("perfilUsuario", "0"); 
 		  response.sendRedirect("../FrontEnd/pages/indexMed.jsp");
 	  }
 	  if(tipoUsuario == 1){
-		  session.putValue("perfilUsuario", 1); 
+		  session.putValue("perfilUsuario", "1"); 
 		  response.sendRedirect("../FrontEnd/pages/indexSec.jsp");
 	  }
 	  if(tipoUsuario == 2){
-		  session.putValue("perfilUsuario", 1); 
+		  session.putValue("perfilUsuario", "2"); 
 		  response.sendRedirect("../FrontEnd/pages/indexAdmin.jsp");
 	  }
   }else{
@@ -61,7 +61,17 @@ if (action.equalsIgnoreCase("Logar")){
 	 //  dispatcher.forward(request,response); 
 
   }
-  
+}
+
+if (action.equalsIgnoreCase("Logout")){
+	  String login;
+	  String senha;
+
+	  // dados informados no formulário
+	  session.putValue("idUsuario", null); 
+	  session.putValue("perfilUsuario", null); 
+	  session.putValue("nomeUsuario", null); 
+	  session.putValue("loginUsuario", null); 
 }
 %>
 
