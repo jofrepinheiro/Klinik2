@@ -6,6 +6,9 @@
 	if(getVar("erro") == 1){
 		alert("Usuário e/ou Senha são inválidos")
 	}
+	if(getVar("erro") == 2){
+		alert("Usuário não autorizado. Faça Login!")
+	}
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
 			return {};

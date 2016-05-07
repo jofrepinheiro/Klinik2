@@ -42,8 +42,8 @@ if (action.equalsIgnoreCase("Logar")){
 	
 	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  if(tipoUsuario == 0){
-		  session.putValue("perfilUsuario", "0"); 
-		  response.sendRedirect("../FrontEnd/pages/indexMed.jsp");
+		  session.putValue("perfilUsuario", "0");
+		  response.sendRedirect("../FrontEnd/pages/indexAdmin.jsp");
 	  }
 	  if(tipoUsuario == 1){
 		  session.putValue("perfilUsuario", "1"); 
@@ -51,7 +51,7 @@ if (action.equalsIgnoreCase("Logar")){
 	  }
 	  if(tipoUsuario == 2){
 		  session.putValue("perfilUsuario", "2"); 
-		  response.sendRedirect("../FrontEnd/pages/indexAdmin.jsp");
+		  response.sendRedirect("../FrontEnd/pages/indexMed.jsp");
 	  }
   }else{
 	  response.sendRedirect("../FrontEnd/pages/login.html?erro=1");

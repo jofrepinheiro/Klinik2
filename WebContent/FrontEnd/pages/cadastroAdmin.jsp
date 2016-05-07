@@ -4,6 +4,14 @@
 <html lang="en">
 
 <head>
+	<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		System.out.println("Perfil do Usuario: " + perfil);
+		if(perfil != "0"){
+			  response.sendRedirect("login.html?erro=2");
+		}
+
+	%>
 	<script type="text/javascript" language="javascript">
 		function valida_form(){
 			nome = document.forms["formCadastro"]["nome"].value;

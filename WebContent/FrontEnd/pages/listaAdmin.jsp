@@ -102,13 +102,13 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroAdmin.html">Administrador</a>
+                                    <a href="cadastroAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroMedico.html">Medico</a>
+                                    <a href="cadastroMedico.jsp">Medico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSec.html">Secretario</a>
+                                    <a href="cadastroSec.jsp">Secretario</a>
                                 </li>	
 							</ul>
                             <!-- /.nav-second-level -->

@@ -48,13 +48,13 @@ public class UsuarioDAO {
 		medico = medicoDAO.getMedicoUsuario(idUsuario);
 		secretario = secretarioDAO.getSecretarioUsuario(idUsuario);
 		administrador = administradorDAO.getAdministradorUsuario(idUsuario);
-		if (medico != null){
+		if (administrador != null){
 			return 0;
 		}else{
 			if(secretario != null){
 				return 1;
 			}else{
-				if(administrador != null){
+				if(medico != null){
 					return 2;
 				}else{
 					return -1;
