@@ -147,7 +147,7 @@
                                     <% for(int i=0; i < medicoList.size();i++){%>
                                     <tbody>
 										<tr class="odd gradeX">
-											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
+											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=medicoList.get(i).getDataNascimento()%></td>
 											<td><%=medicoList.get(i).getNome()%></td>
 											<td><%=medicoList.get(i).getCpf()%></td>
@@ -156,7 +156,6 @@
                                         </tr>
                                     </tbody>
                                     <%} %>
-                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->

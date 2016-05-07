@@ -147,7 +147,7 @@
                                     <% for(int i=0; i < secretarioList.size();i++){%>
                                     <tbody>
 										<tr class="odd gradeX">
-											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
+											<td><a href="cadastroSec.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=secretarioList.get(i).getDataNascimento()%></td>
 											<td><%=secretarioList.get(i).getNome()%></td>
 											<td><%=secretarioList.get(i).getCpf()%></td>

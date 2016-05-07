@@ -1,3 +1,6 @@
+<%@page import="DAO.AdministradorDAO"%>
+<%@page import="model.Administrador"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,8 +35,9 @@
     <![endif]-->
     
 <% 
-    
-    
+	ArrayList<Administrador> admList = new ArrayList<>();
+    AdministradorDAO admDAO = new AdministradorDAO();
+    admList = admDAO.getAdministradorList();
 %>
 
 </head>
@@ -90,7 +94,7 @@
                                     <a href="listaMedico.jsp">Médico</a>
                                 </li>
 								<li>
-                                    <a href="listaSec.jsp">Secret�rio</a>
+                                    <a href="listaSec.jsp">Secretário</a>
                                 </li>	
 							</ul>
                         </li>
@@ -142,20 +146,18 @@
 											<th>Perfil</th>
                                         </tr>
                                     </thead>
+                                    <% for(int i=0; i < admList.size();i++){%>
                                     <tbody>
 										<tr class="odd gradeX">
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-                                            <td>drjp</td>
-											<td>11/04/1930</td>
-											<td>Dr. João Paulo</td>
-											<td>012.345.228-90</td>
-											<td>(79) 3110-3121</td>
-											<td>jpcalypso@klinik.com</td>
-											<td>Rua dos Aflitos, 20. Bairro Luzia</td>
-											<td>Adm</td>
-											
+											<td><%=admList.get(i).getDataNascimento()%></td>
+											<td><%=admList.get(i).getNome()%></td>
+											<td><%=admList.get(i).getCpf()%></td>
+											<td><%=admList.get(i).getTelefone()%></td>
+											<td><%=admList.get(i).getEmail()%></td>											
                                         </tr>
                                     </tbody>
+                                    <%} %>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
