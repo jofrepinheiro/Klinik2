@@ -33,15 +33,25 @@ if (action.equalsIgnoreCase("Logar")){
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   usuario = usuarioDAO.loginUsuario(login, senha);
   if(usuario != null){
+	  session.putValue("loginUsuario", usuario.getNome()); //Grava a session com o Login
+	  session.putValue("nomeUsuario", usuario.getNome()); //Grava a session com o Login
+	  session.putValue("idUsuario", usuario.getIdUsuario()); //Grava a session com a Senha
+	 // session.setAttribute("Nome",objeto);
+	  //SeuObjeto = session.getAttribute("Nome");
+	
+	
 	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  if(tipoUsuario == 0){
-		  response.sendRedirect("../FrontEnd/pages/indexMed.html");
+		  session.putValue("perfilUsuario", 0); 
+		  response.sendRedirect("../FrontEnd/pages/indexMed.jsp");
 	  }
 	  if(tipoUsuario == 1){
-		  response.sendRedirect("../FrontEnd/pages/indexSec.html");
+		  session.putValue("perfilUsuario", 1); 
+		  response.sendRedirect("../FrontEnd/pages/indexSec.jsp");
 	  }
 	  if(tipoUsuario == 2){
-		  response.sendRedirect("../FrontEnd/pages/indexAdmin.html");
+		  session.putValue("perfilUsuario", 1); 
+		  response.sendRedirect("../FrontEnd/pages/indexAdmin.jsp");
 	  }
   }else{
 	  response.sendRedirect("../FrontEnd/pages/login.html?erro=1");

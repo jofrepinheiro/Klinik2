@@ -1,7 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - ClÃ­nica MÃ©dica</title>
+    <title>Klinik - Clínica Médica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,6 @@
     
 
 </head>
-
 <body>
 
     <div id="wrapper">
@@ -53,10 +52,10 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Nome de UsuÃ¡rio <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> InformaÃ§Ãµes </a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -79,7 +78,7 @@
                             <a href="listaConsultaDia.html"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
                         </li>
                         <li>
-                            <a href="listaConsultaHistorico.html"><i class="glyphicon glyphicon-book"> </i>  HistÃ³rico de Consultas</a>
+                            <a href="listaConsultaHistorico.html"><i class="glyphicon glyphicon-book"> </i>  Histórico de Consultas</a>
                         </li>
                     </ul>
                 </div>
@@ -155,5 +154,4 @@
     </script>
 
 </body>
-
 </html>

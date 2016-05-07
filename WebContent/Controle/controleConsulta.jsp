@@ -34,7 +34,6 @@ if (action.equalsIgnoreCase("Cadastrar")){
   hora = request.getParameter("hora");
   motivo = request.getParameter("motivo");
   
-  System.out.println(paciente + medico + dataConsulta + hora + motivo);
    
  /*  Consulta consulta = new Consulta();
   ConsultaDAO consultaDAO = new ConsultaDAO();
