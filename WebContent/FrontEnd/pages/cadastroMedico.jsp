@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <head>
 
 	<script type="text/javascript" language="javascript">
@@ -18,7 +17,7 @@
 			numero = document.forms["formCadastro"]["numero"].value;
 
 			if(nome == "" || senha == "" || cpf =="" || crm=="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
-				alert("Por favor, preencha todos os campos obrigatÃ³rios");
+				alert("Por favor, preencha todos os campos obrigatórios");
 				return false
 			}else{
 				document.formCadastro.submit();
@@ -32,7 +31,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - ClÃ­nica MÃ©dica</title>
+    <title>Klinik - Clínica Médica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -78,7 +77,7 @@
                         <i class="fa fa-user fa-fw"></i><%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> InformaÃ§Ãµes </a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -104,10 +103,10 @@
                                     <a href="listaAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.jsp">MÃ©dico</a>
+                                    <a href="listaMedico.jsp">Médico</a>
                                 </li>
 								<li>
-                                    <a href="listaSec.jsp">SecretÃ¡rio</a>
+                                    <a href="listaSec.jsp">Secretário</a>
                                 </li>	
 							</ul>
                         </li>
@@ -118,10 +117,10 @@
                                     <a href="cadastroAdmin.html">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="#">MÃ©dico</a>
+                                    <a href="#">Médico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSec.html">SecretÃ¡rio</a>
+                                    <a href="cadastroSec.html">Secretário</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -145,7 +144,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-							Cadastrar MÃ©dico
+							Cadastrar Médico
                         </div>
                         <div class="panel-body">
                             <form method="post" role="form" name="formCadastro" id="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleMedico.jsp">
@@ -196,7 +195,7 @@
 											<label>Especialidade Principal</label>
 											<select class="form-control" id="sel1" name="especialidade" id="especialidade">
 												<option value="NULL">--</option>
-												<option value="ESTETICA">EstÃ©tica</option>
+												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>
 												<option value="ONCO">Oncologia</option>
 												<option value="ORTO">Ortopedia</option>
@@ -207,10 +206,10 @@
 										</div>
 										
 										<div class="form-group">
-											<label>Especialidade SecundÃ¡ria</label>
+											<label>Especialidade Secundária</label>
 											<select class="form-control" id="sel1" name="especialidade2" id="especialidade2">
 												<option value="NULL">--</option>
-												<option value="ESTETICA">EstÃ©tica</option>
+												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>
 												<option value="ONCO">Oncologia</option>
 												<option value="ORTO">Ortopedia</option>
@@ -235,7 +234,7 @@
 									</div>
 									
 									<div class="form-group">
-										<label>NÃºmero</label>
+										<label>Número</label>
 										<input id="numero" class="form-control" placeholder="" name="numero">
 									</div>
 									
@@ -286,5 +285,4 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
-
 </html>

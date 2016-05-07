@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 	<script type="text/javascript" language="javascript">
 		function valida_form(){
 			nome = document.forms["formCadastro"]["nome"].value;
@@ -10,29 +11,27 @@
 			login = document.forms["formCadastro"]["login"].value;
 			dataNascimento = document.forms["formCadastro"]["dataNascimento"].value;
 			cpf = document.forms["formCadastro"]["cpf"].value;
-			crm = document.forms["formCadastro"]["crm"].value;
 			telefone = document.forms["formCadastro"]["telefone"].value;
 			logradouro = document.forms["formCadastro"]["logradouro"].value;
 			bairro = document.forms["formCadastro"]["bairro"].value;
 			complemento = document.forms["formCadastro"]["complemento"].value;
 			numero = document.forms["formCadastro"]["numero"].value;
 
-			if(nome == "" || senha == "" || cpf =="" || crm=="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
-				alert("Por favor, preencha todos os campos obrigat√≥rios");
+			if(nome == "" || senha == "" || cpf =="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
+				alert("Por favor, preencha todos os campos obrigatÛrios");
 				return false
 			}else{
 				document.formCadastro.submit();
 			}
 		}
 </script>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - Cl√≠nica M√©dica</title>
+    <title>Klinik - ClÌnica MÈdica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -75,10 +74,10 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i><%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informa√ß√µes </a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> InformaÁıes </a>
                         </li>
 							 <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -104,10 +103,10 @@
                                     <a href="listaAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.jsp">M√©dico</a>
+                                    <a href="listaMedico.jsp">MÈdico</a>
                                 </li>
 								<li>
-                                    <a href="listaSec.jsp">Secret√°rio</a>
+                                    <a href="listaSec.jsp">Secret·rio</a>
                                 </li>	
 							</ul>
                         </li>
@@ -118,10 +117,10 @@
                                     <a href="cadastroAdmin.html">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="#">M√©dico</a>
+                                    <a href="cadastroMedico.html">MÈdico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSec.html">Secret√°rio</a>
+                                    <a href="cadastroSec.html">Secret·rio</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -133,92 +132,53 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="page-header"> </h3>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+        <div id="page-wrapper" style="padding-top:5%">
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-							Cadastrar M√©dico
+							<h4>Cadastrar Administrador</h4>
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro" id="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleMedico.jsp">
+                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleAdministrador.jsp">
 								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>Login</label>
-                                            <input id="login" name="login" class="form-control" placeholder="">
+                                            <input name="login" class="form-control" placeholder="">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Senha</label>
-                                            <input id="senha" name="senha" type="password" class="form-control" placeholder="">
+                                            <input name="senha" type="password" class="form-control" placeholder="">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Data de Nascimento</label>
-                                            <input id="dataNascimento" name="dataNascimento" class="form-control" placeholder="DD/MM/AAAA">
+                                            <input class="form-control" name="dataNascimento" placeholder="DD/MM/AAAA">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Nome</label>
-                                            <input id="nome" name="nome" class="form-control" placeholder="">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>CPF</label>
-                                            <input id="cpf" name="cpf" class="form-control" placeholder="">
+                                            <input class="form-control" name="nome" placeholder="">
                                         </div>
 										
 										<div class="form-group">
+                                            <label>CPF</label>
+                                            <input name="cpf" class="form-control" placeholder="">
+                                        </div>
+                                        
+										<div class="form-group">
                                             <label>Telefone</label>
-                                            <input id="telefone" name="telefone" class="form-control" placeholder="(XX)XXXX-XXXX">
+                                            <input class="form-control" name="telefone" placeholder="(XX) X XXXX XXXX">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Email</label>
-                                            <input id="email" name="email" class="form-control" placeholder="john@doe.com">
+                                            <input class="form-control" name="email" placeholder="john@doe.com">
                                         </div>
-										
-										<div class="form-group">
-											<label>CRM</label>
-											<input id="crm" name="crm" class="form-control">
-										</div>
-										
-										<div class="form-group">
-											<label>Especialidade Principal</label>
-											<select class="form-control" id="sel1" name="especialidade" id="especialidade">
-												<option value="NULL">--</option>
-												<option value="ESTETICA">Est√©tica</option>
-												<option value="INFECTO">Infectologia</option>
-												<option value="ONCO">Oncologia</option>
-												<option value="ORTO">Ortopedia</option>
-												<option value="OTORRINO">Otorrinolaringologia</option>
-												<option value="PARASITO">Parasitologia</option>
-												<option value="PEDIATRA">Pediatria</option>
-											</select>
-										</div>
-										
-										<div class="form-group">
-											<label>Especialidade Secund√°ria</label>
-											<select class="form-control" id="sel1" name="especialidade2" id="especialidade2">
-												<option value="NULL">--</option>
-												<option value="ESTETICA">Est√©tica</option>
-												<option value="INFECTO">Infectologia</option>
-												<option value="ONCO">Oncologia</option>
-												<option value="ORTO">Ortopedia</option>
-												<option value="OTORRINO">Otorrinolaringologia</option>
-												<option value="PARASITO">Parasitologia</option>
-												<option value="PEDIATRA">Pediatria</option>
-											</select>
-										</div>
 										
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -226,33 +186,31 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label>CEP</label>
-										<input id="cep" class="form-control" placeholder="" name="cep">
+										<input class="form-control" placeholder="" name="cep">
                                     </div>
 									
 									<div class="form-group">
 										<label>Logradouro</label>
-										<input id="logradouro" class="form-control" name="logradouro">
+										<input class="form-control" name="logradouro">
 									</div>
 									
 									<div class="form-group">
-										<label>N√∫mero</label>
-										<input id="numero" class="form-control" placeholder="" name="numero">
+										<label>N˙mero</label>
+										<input class="form-control" placeholder="" name="numero">
 									</div>
 									
 									<div class="form-group">
 										<label>Bairro</label>
-										<input id="bairro" class="form-control" placeholder="" name="bairro">
+										<input class="form-control" placeholder="" name="bairro">
 									</div>									
 									
 									<div class="form-group">
 										<label>Complemento</label>
-										<input id="complemento" class="form-control" placeholder="" name="complemento">
+										<input class="form-control" placeholder="" name="complemento">
 									</div>
-									
-								</div>
-								
+								</div>	
                             </div>
-								<button type="button"  class="btn btn-default" onclick="valida_form(this);">Enviar</button>
+								<button type="button" onclick="valida_form(this);" class="btn btn-default">Enviar</button>
 								<button type="reset"  class="btn btn-default">Limpar Campos</button>
 							
 							</form>

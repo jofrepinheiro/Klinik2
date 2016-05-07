@@ -71,7 +71,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexMed.html"><i class="glyphicon glyphicon-home"></i>  Home</a>
+                            <a href="indexMed.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a>
                         </li>
 						
                         <li>
