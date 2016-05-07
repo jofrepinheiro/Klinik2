@@ -39,7 +39,6 @@
 	ArrayList<Medico> medicoList = new ArrayList<>();
     MedicoDAO medicoDAO = new MedicoDAO();
     medicoList = medicoDAO.getMedicoList();
-    
 %>
 
 </head>
@@ -151,9 +150,9 @@
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=medicoList.get(i).getDataNascimento()%></td>
 											<td><%=medicoList.get(i).getNome()%></td>
-											<td><%=medicoList.get(1).getCpf()%></td>
-											<td><%=medicoList.get(1).getTelefone()%></td>
-											<td><%=medicoList.get(1).getEmail()%></td>											
+											<td><%=medicoList.get(i).getCpf()%></td>
+											<td><%=medicoList.get(i).getTelefone()%></td>
+											<td><%=medicoList.get(i).getEmail()%></td>											
                                         </tr>
                                     </tbody>
                                     <%} %>

@@ -150,9 +150,9 @@
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=secretarioList.get(i).getDataNascimento()%></td>
 											<td><%=secretarioList.get(i).getNome()%></td>
-											<td><%=secretarioList.get(1).getCpf()%></td>
-											<td><%=secretarioList.get(1).getTelefone()%></td>
-											<td><%=secretarioList.get(1).getEmail()%></td>											
+											<td><%=secretarioList.get(i).getCpf()%></td>
+											<td><%=secretarioList.get(i).getTelefone()%></td>
+											<td><%=secretarioList.get(i).getEmail()%></td>											
                                         </tr>
                                     </tbody>
                                     <%} %>
