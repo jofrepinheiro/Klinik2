@@ -127,7 +127,7 @@ public class MedicoDAO {
 		int idUsuario = usuarioDAO.getIdUsuario();
 		
 		
-		String sql = "INSERT INTO MEDICO (idUsuario, CRM, especialidade2, especialidade2) VALUES (?, ?)";
+		String sql = "INSERT INTO MEDICO (idUsuario, CRM, especialidade2, especialidade2) VALUES (?, ?, ?, ?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, idUsuario);
