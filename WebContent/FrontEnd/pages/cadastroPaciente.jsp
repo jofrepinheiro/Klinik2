@@ -4,6 +4,13 @@
 <html lang="en">
 
 <head>
+<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		if(perfil != "1"){
+			  response.sendRedirect("login.html?erro=2");
+		}
+
+%>
 
 	<script type="text/javascript" language="javascript">
 			function valida_form(){
@@ -33,7 +40,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - Clï¿½nica Mï¿½dica</title>
+    <title>Klinik - Clínica Médica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -76,7 +83,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Olï¿½, Secretï¿½rio <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informaï¿½ï¿½es </a>
@@ -95,17 +102,17 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexSec.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexSec.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
 						<li>
                             <a href="#"><i class="fa fa-table fa-fw"> </i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaPaciente.html">Paciente</a>
+                                    <a href="listaPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="listaConsulta.html">Consulta</a>
+                                    <a href="listaConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -114,10 +121,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroPaciente.html">Paciente</a>
+                                    <a href="cadastroPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroConsulta.html">Consulta</a>
+                                    <a href="cadastroConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->

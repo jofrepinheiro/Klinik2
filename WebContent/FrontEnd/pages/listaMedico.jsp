@@ -89,7 +89,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexMed.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexAdmin.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
                         <li>
@@ -151,8 +151,8 @@
                                             <th>Email</th>
                                         </tr>
                                     </thead>
-                                    <% for(int i=0; i < medicoList.size();i++){%>
                                     <tbody>
+                                    <% for(int i=0; i < medicoList.size();i++){%>
 										<tr class="odd gradeX">
 											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=medicoList.get(i).getDataNascimento()%></td>
@@ -161,8 +161,8 @@
 											<td><%=medicoList.get(i).getTelefone()%></td>
 											<td><%=medicoList.get(i).getEmail()%></td>											
                                         </tr>
-                                    </tbody>
                                     <%} %>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->

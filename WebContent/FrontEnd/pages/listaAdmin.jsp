@@ -143,8 +143,8 @@
                                             <th>Email</th>
                                         </tr>
                                     </thead>
-                                    <% for(int i=0; i < admList.size();i++){%>
                                     <tbody>
+                                    <% for(int i=0; i < admList.size();i++){%>
 										<tr class="odd gradeX">
 											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
 											<td><%=admList.get(i).getDataNascimento()%></td>
@@ -153,8 +153,8 @@
 											<td><%=admList.get(i).getTelefone()%></td>
 											<td><%=admList.get(i).getEmail()%></td>											
                                         </tr>
-                                    </tbody>
                                     <%} %>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->

@@ -1,14 +1,15 @@
+<%@page import="model.Paciente"%>
+<%@page import="DAO.PacienteDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%	  
-		String perfil = (String) session.getAttribute("perfilUsuario");
-		if(perfil != "1"){
-			  response.sendRedirect("login.html?erro=2");
-		}
-
+<% 
+	ArrayList<Paciente> pacienteList = new ArrayList<>();
+	PacienteDAO pacienteDAO = new PacienteDAO();
+	pacienteList = pacienteDAO.getPacienteList();
 %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +66,7 @@
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
-                        <li><a href="../../Controle/controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -111,40 +112,53 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-		<div id="page-wrapper" style="padding-top: 5%">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			  </ol>
-
-			  <!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-				  <img src="img/slider/slider1.png" alt="...">
-				</div>
-				<div class="item">
-				  <img src="img/slider/slider2.jpg" alt="...">
-				</div>
-				<div class="item">
-				  <img src="img/slider/slider3.jpg" alt="...">
-				</div>
-			</div>
-
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				  </a>
-				</div>     
-				</div>
+		
+        <div id="page-wrapper"  style="padding-top: 5%">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Pacientes
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+											<th>CPF</th>
+											<th>Sexo</th>
+											<th>Data de Nascimento</th>
+                                            <th>Telefone</th>
+                                            <th>Email</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% for(int i=0; i < pacienteList.size();i++){%>
+                                        <tr class="odd gradeX">
+											<td><%=pacienteList.get(i).getNome()%></td>
+											<td><%=pacienteList.get(i).getCpf()%></td>
+											<td><%=pacienteList.get(i).getSexo()%></td>
+											<td><%=pacienteList.get(i).getDataNasc()%></td>
+											<td><%=pacienteList.get(i).getTelefone()%></td>
+											<td><%=pacienteList.get(i).getEmail()%></td>											
+                                        </tr>
+                                        <%} %>				
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -158,14 +172,21 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-</body>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
 
+</body>
 </html>
