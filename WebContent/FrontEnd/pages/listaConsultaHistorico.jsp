@@ -126,22 +126,23 @@
 									</tr>
 								</thead>
 								<tbody>
+									<%String[] dmy; %>
 									<% for(int i=0; i < consultaHistoricoList.size();i++){%>
 									<tr>
 										<td class="agenda-date" class="active" rowspan="1">
-											<% String[] dmy = consultaHistoricoList.get(i).getDataConsulta().toString().split("-"); %>
+											<%  dmy = consultaHistoricoList.get(i).getDataConsulta().toString().split("-"); %>
 											<div class="dayofmonth"><%= dmy[2] %></div>
 											<div class="dayofweek">
 												<%switch(dmy[1]){
-												case "1": %>Janeiro<% break;
-												case "2": %>Fevereiro<% break;
-												case "3": %>Março<% break;
-												case "4": %>Abril<% break;
-												case "5": %>Maio<% break;
-												case "6": %>Junho<% break;
-												case "7": %>Julho<% break;
-												case "8": %>Agosto<% break;
-												case "9": %>Setembro<% break;
+												case "01": %>Janeiro<% break;
+												case "02": %>Fevereiro<% break;
+												case "03": %>Março<% break;
+												case "04": %>Abril<% break;
+												case "05": %>Maio<% break;
+												case "06": %>Junho<% break;
+												case "07": %>Julho<% break;
+												case "08": %>Agosto<% break;
+												case "09": %>Setembro<% break;
 												case "10": %>Outubro<% break;
 												case "11": %>Novembro<% break;
 												case "12": %>Dezembro<% break;
