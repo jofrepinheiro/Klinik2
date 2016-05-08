@@ -180,7 +180,7 @@
                                     <a href="cadastroMedico.jsp">Médico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSecretario.jsp">Secretário</a>
+                                    <a href="cadastroSec.jsp">Secretário</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->

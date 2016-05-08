@@ -260,14 +260,14 @@
 												<option value="ORTO">Ortopedia</option>
 												<option value="OTORRINO">Otorrinolaringologia</option>
 												<option value="PARASITO">Parasitologia</option>
-												<option value="PEDIATRA">Pediatria</option>
+												<option value="PEDIATRIA">Pediatria</option>
 											</select>
 										</div>
 										
 										<div class="form-group">
 											<label>Especialidade Secundária</label>
 											<select class="form-control" id="sel1" name="especialidade2" id="especialidade2">
-												<option value="NULL">--</option>
+												<option value="0">--</option>
 												<option value="ESTETICA">Estética</option>
 												<option value="INFECTO">Infectologia</option>
 												<option value="ONCO">Oncologia</option>
