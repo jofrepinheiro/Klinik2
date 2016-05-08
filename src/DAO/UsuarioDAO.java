@@ -27,7 +27,7 @@ public class UsuarioDAO {
 		
 		statement.close();
 		con.close();
-		if (nome != null){
+		if (nome != ""){
 			return false;
 		}else{
 			return true;
@@ -48,9 +48,7 @@ public class UsuarioDAO {
 		medico = medicoDAO.getMedicoUsuario(idUsuario);
 		secretario = secretarioDAO.getSecretarioUsuario(idUsuario);
 		administrador = administradorDAO.getAdministradorUsuario(idUsuario);
-		System.out.println("Teste: " +administrador.getIdAdministrador());
-		System.out.println("Teste2: " +secretario.getIdSecretario());
-		System.out.println("Teste3: " +medico.getIdMedico());
+
 
 		if (administrador.getIdAdministrador() != 0){
 			System.out.println("Adm" + administrador.getIdAdministrador());

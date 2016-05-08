@@ -1,3 +1,4 @@
+<%@page import="DAO.UsuarioDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="DAO.MedicoDAO"%>
 <%@page import="DAO.EnderecoDAO"%>
@@ -73,6 +74,12 @@ if (action.equalsIgnoreCase("Cadastrar")){
   medico.setCRM(Integer.parseInt(crm));
   medico.setEspecialidade(especialidade);
   medico.setEspecialidade2(especialidade2);
+  
+  UsuarioDAO usuarioDAO = new UsuarioDAO();
+  boolean cpfValido = usuarioDAO.validarCpf(cpf);
+  if(!cpfValido){
+	  response.sendRedirect("../FrontEnd/pages/cadastroMedico.jsp?erro=1");
+  }
   
   endereco.setBairro(bairro);
   endereco.setComplemento(complemento);

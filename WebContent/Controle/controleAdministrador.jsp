@@ -1,3 +1,4 @@
+<%@page import="DAO.UsuarioDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="DAO.AdministradorDAO"%>
 <%@page import="DAO.EnderecoDAO"%>
@@ -39,37 +40,46 @@ if (action.equalsIgnoreCase("Cadastrar")){
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
   
-  bairro = request.getParameter("bairro");
-  logradouro = request.getParameter("logradouro");
-  numero = request.getParameter("numero");
-  complemento = request.getParameter("complemento");
-  cep = request.getParameter("cep");
+  UsuarioDAO usuarioDAO = new UsuarioDAO();
+  boolean cpfValido = usuarioDAO.validarCpf(cpf);
+  System.out.println("CPF Valido : "+cpfValido);
+  if(cpfValido == false){
+	  response.sendRedirect("../FrontEnd/pages/cadastroAdmin.jsp?erro=1");
+	  System.out.println("Aqui 1");
+  }else{
   
-  Endereco endereco = new Endereco();
-  Administrador administrador  = new Administrador();
-  EnderecoDAO enderecoDAO = new EnderecoDAO();
-  AdministradorDAO administradorDAO = new AdministradorDAO();  
-  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
-  
-  administrador.setLogin(login);
-  administrador.setSenha(senha);
-  administrador.setDataNascimento(data);
-  administrador.setNome(nome);
-  administrador.setAtivo(1);
-  administrador.setEmail(email);
-  administrador.setTelefone(telefone);
-  administrador.setCpf(cpf);
-  
-  endereco.setBairro(bairro);
-  endereco.setComplemento(complemento);
-  endereco.setCEP(cep);
-  endereco.setLogradouro(logradouro);
-  endereco.setNumero(Integer.parseInt(numero));
-  
-  enderecoDAO.cadastrarEndereco(endereco);
-  administradorDAO.cadastrarAdministrador(administrador);
-  
+	  bairro = request.getParameter("bairro");
+	  logradouro = request.getParameter("logradouro");
+	  numero = request.getParameter("numero");
+	  complemento = request.getParameter("complemento");
+	  cep = request.getParameter("cep");
+	  
+	  Endereco endereco = new Endereco();
+	  Administrador administrador  = new Administrador();
+	  EnderecoDAO enderecoDAO = new EnderecoDAO();
+	  AdministradorDAO administradorDAO = new AdministradorDAO();  
+	  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
+	  
+	  administrador.setLogin(login);
+	  administrador.setSenha(senha);
+	  administrador.setDataNascimento(data);
+	  administrador.setNome(nome);
+	  administrador.setAtivo(1);
+	  administrador.setEmail(email);
+	  administrador.setTelefone(telefone);
+	  administrador.setCpf(cpf);
+	  
+	  endereco.setBairro(bairro);
+	  endereco.setComplemento(complemento);
+	  endereco.setCEP(cep);
+	  endereco.setLogradouro(logradouro);
+	  endereco.setNumero(Integer.parseInt(numero));
+	  System.out.println("Aqui2");
+	
+	  enderecoDAO.cadastrarEndereco(endereco);
+	  administradorDAO.cadastrarAdministrador(administrador);
+  }
 }
  %>
 </body>
