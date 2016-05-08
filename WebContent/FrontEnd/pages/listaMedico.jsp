@@ -203,7 +203,7 @@
 											<td><%=medicoList.get(i).getDataNascimento()%></td>
 											<td><%=medicoList.get(i).getTelefone()%></td>
 											<td><%=medicoList.get(i).getEmail()%></td>
-											<td><%=medicoList.get(i).getEspecialidade()%> <%if(medicoList.get(i).getEspecialidade2()!= "0"){%>, <%=medicoList.get(i).getEspecialidade2()%><%} %></td>	
+											<td><%=medicoList.get(i).getEspecialidade()%> <%if(!medicoList.get(i).getEspecialidade2().equalsIgnoreCase("0")){%>, <%=medicoList.get(i).getEspecialidade2()%><%} %></td>	
 											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>										
                                         </tr>
                                     <%} %>

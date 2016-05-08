@@ -133,4 +133,29 @@ public class ConsultaDAO {
 		return consultasList;
 	}
 	
+	public ArrayList<Consulta> getConsultasHistoricoList() throws SQLException{
+		ArrayList<Consulta> consultasList = new ArrayList<>();
+		Connection con = new Conexao().getConnection();		
+		
+		String sql = "select * from consulta where dataconsulta = CURRENT_DATE and atendida = 1 order by horarioconsulta";
+		PreparedStatement statement = con.prepareStatement(sql);
+		ResultSet rs = statement.executeQuery();
+		
+		while (rs.next()){
+			Consulta consulta = new Consulta();
+			consulta.setIdConsulta(rs.getInt(1));
+			consulta.setDataConsulta(rs.getDate(2));
+			consulta.setHorarioConsulta(rs.getTime(3));
+			consulta.setMotivo(rs.getString(4));
+			consulta.setIdMedico(rs.getInt(5));
+			consulta.setIdPaciente(rs.getInt(6));
+			consulta.setIdPagamento(rs.getInt(7));
+			consultasList.add(consulta);
+		}
+		
+		statement.close();
+		con.close();
+		return consultasList;
+	}
+	
 }
