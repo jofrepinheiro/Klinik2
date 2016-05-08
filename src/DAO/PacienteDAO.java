@@ -17,19 +17,21 @@ public class PacienteDAO {
 		
 		Connection con = new Conexao().getConnection();		
 		
-		String sql = "SELECT * FROM PACIENTE";
+		String sql = "SELECT idpaciente, nome, telefone, cpf, email, sexo, datanasc, idendereco FROM PACIENTE";
 		PreparedStatement statement = con.prepareStatement(sql);
 		ResultSet rs = statement.executeQuery();
 		
 		while (rs.next()){
 			Paciente paciente = new Paciente();
 			paciente.setIdPaciente(rs.getInt(1));
-			paciente.setTelefone(rs.getString(2));
-			paciente.setCpf(rs.getString(3));
-			paciente.setEmail(rs.getString(4));
-			paciente.setSexo(rs.getString(5).charAt(0));
-			paciente.setDataNasc(rs.getDate(6));
-			paciente.setIdEndereco(rs.getInt(7));	
+			paciente.setNome(rs.getString(2));
+			paciente.setTelefone(rs.getString(3));
+			paciente.setCpf(rs.getString(4));
+			paciente.setEmail(rs.getString(5));
+			paciente.setSexo(rs.getString(6).charAt(0));
+			paciente.setDataNasc(rs.getDate(7));
+			paciente.setIdEndereco(rs.getInt(8));
+			pacienteList.add(paciente);
 		}
 		
 		statement.close();
@@ -42,6 +44,12 @@ public class PacienteDAO {
 		Connection con = new Conexao().getConnection();
 		String sql = "INSERT INTO Paciente (nome, telefone, cpf, email, sexo, dataNasc, idEndereco) "
 				+ "VALUES (?,?,?,?,?,?,?)";
+		
+		
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		int endereco = enderecoDAO.getIdEndereco();
+		
+		paciente.setIdEndereco(endereco);
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, paciente.getNome());

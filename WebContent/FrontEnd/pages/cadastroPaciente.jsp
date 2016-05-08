@@ -213,6 +213,7 @@
 									
 									
                             </div>
+                            	<button type="button"  class="btn btn-default" onclick="valida_form(this);">Enviar</button>
 								<button type="reset"  class="btn btn-default">Limpar Campos</button>
 							
 							</form>
