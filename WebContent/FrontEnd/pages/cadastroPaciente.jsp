@@ -4,6 +4,13 @@
 <html lang="en">
 
 <head>
+<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		if(perfil != "1"){
+			  response.sendRedirect("login.html?erro=2");
+		}
+
+%>
 
 	<script type="text/javascript" language="javascript">
 			function valida_form(){
