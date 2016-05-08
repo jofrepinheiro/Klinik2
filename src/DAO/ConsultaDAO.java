@@ -112,7 +112,7 @@ public class ConsultaDAO {
 		ArrayList<Consulta> consultasList = new ArrayList<>();
 		Connection con = new Conexao().getConnection();		
 		
-		String sql = "select * from consulta where dataconsulta = CURRENT_DATE";
+		String sql = "select * from consulta where dataconsulta = CURRENT_DATE order by horarioconsulta";
 		PreparedStatement statement = con.prepareStatement(sql);
 		ResultSet rs = statement.executeQuery();
 		

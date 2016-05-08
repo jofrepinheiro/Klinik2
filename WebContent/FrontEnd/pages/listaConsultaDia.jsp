@@ -1,3 +1,6 @@
+<%@page import="DAO.ConsultaDAO"%>
+<%@page import="model.Consulta"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,6 +39,11 @@
 	if(perfil != "2"){
 	  response.sendRedirect("login.html?erro=2");
 	}
+	
+	ArrayList<Consulta> consultaDiaList = new ArrayList<>();
+    ConsultaDAO consultaDAO = new ConsultaDAO();
+    consultaDiaList = consultaDAO.getConsultasDiaList();
+
 %>
 
 </head>
@@ -106,6 +114,7 @@
 							<table class="table table-condensed table-bordered">
 								<thead>
 									<tr>
+										<th>Atender Paciente</th>
 										<th>Hora</th>
 										<th>Paciente</th>
 										<th>Queixa</th>
@@ -127,7 +136,11 @@
 												Dor de Barriga
 											</div>
 										</td>
-										<p>	aaa </p>
+										<td>
+											<div>
+												Dor de Barriga
+											</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
