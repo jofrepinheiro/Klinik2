@@ -64,7 +64,7 @@ public class ConsultaDAO {
 		Connection con = new Conexao().getConnection();
 		
 		String sql = "INSERT INTO CONSULTA (dataConsulta, horarioConsulta, motivo, idMedico, idPaciente, idPagamento) "
-				+ "VALUES (?,?,?,?,?,?,?)";
+				+ "VALUES (?,?,?,?,?,?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setDate(1,consulta.getDataConsulta());
@@ -73,7 +73,7 @@ public class ConsultaDAO {
 		statement.setInt(4, consulta.getIdMedico());
 		statement.setInt(5, consulta.getIdPaciente());
 		statement.setInt(6, consulta.getIdPagamento());
-
+		
 		statement.executeUpdate();
 		
 		statement.close();

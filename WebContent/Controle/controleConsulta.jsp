@@ -1,3 +1,5 @@
+<%@page import="java.sql.Time"%>
+<%@page import="java.text.Format"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
 <%@page import="DAO.ConsultaDAO"%>
@@ -23,7 +25,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   String paciente;
   String medico;
   String dataConsulta;
-  String hora;
+  String horaConsulta;
   String motivo;
   
 
@@ -31,23 +33,28 @@ if (action.equalsIgnoreCase("Cadastrar")){
   paciente = request.getParameter("paciente");
   medico = request.getParameter("medico");
   dataConsulta = request.getParameter("data");
-  hora = request.getParameter("hora");
+  horaConsulta = request.getParameter("hora");
   motivo = request.getParameter("motivo");
   
-   
- /*  Consulta consulta = new Consulta();
+  
+  Consulta consulta = new Consulta();
   ConsultaDAO consultaDAO = new ConsultaDAO();
   
   SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
   java.sql.Date data = new java.sql.Date(format.parse(dataConsulta).getTime());
+
+  format = new SimpleDateFormat("HH:MM");
+  java.sql.Time hora = new java.sql.Time(format.parse(horaConsulta).getTime());
+  
   
   consulta.setIdPaciente(Integer.parseInt(paciente));
   consulta.setIdMedico(Integer.parseInt(medico));
   consulta.setDataConsulta(data);
-  //consulta.setHorarioConsulta(hora); PARSE p/ hora
+  consulta.setHorarioConsulta(hora);
   consulta.setMotivo(motivo);
+  consulta.setIdPagamento(1);
   
-  consultaDAO.cadastrarConsulta(consulta); */
+  consultaDAO.cadastrarConsulta(consulta);
 }
 //}
 %>

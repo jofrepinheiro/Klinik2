@@ -11,6 +11,21 @@
 
 <head>
 
+	<script type="text/javascript" language="javascript">
+			function valida_form(){
+				data = document.forms["formCadastro"]["data"].value;
+				hora = document.forms["formCadastro"]["hora"].value;
+				
+	
+				if(data == "" || hora == ""){
+					alert("Por favor, preencha todos os campos obrigat�rios");
+					return false
+				}else{
+					document.formCadastro.submit();
+				}
+			}
+	</script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,7 +128,7 @@
                                     <a href="cadastroPaciente.html">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroConsulta.html">Consulta</a>
+                                    <a href="#">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -140,7 +155,7 @@
 							Cadastro de Consulta
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleConsulta.jsp">
+                            <form method="post" role="form" name="formCadastro"  onsubmit="return valida_form(this)" action="../../Controle/controleConsulta.jsp">
 								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-12">
@@ -180,7 +195,7 @@
 										
 									</div>
 								</div>
-									<button type="submit"  class="btn btn-default">Enviar</button>
+									<button type="button" onclick="valida_form(this);" class="btn btn-default">Agendar</button>
 									<button type="reset"  class="btn btn-default">Limpar Campos</button>
                             </div>
 								
