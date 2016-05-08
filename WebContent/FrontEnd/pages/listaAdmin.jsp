@@ -176,23 +176,25 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Alterar</th>
+                                        	<th>Nome</th>
+                                        	<th>CPF</th>
+                                        	<th>Login</th>
 											<th>Nascimento</th>
-                                            <th>Nome</th>
-											<th>CPF</th>
 											<th>Telefone</th>
                                             <th>Email</th>
+                                            <th>Alterar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <% for(int i=0; i < admList.size();i++){%>
 										<tr class="odd gradeX">
-											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-											<td><%=admList.get(i).getDataNascimento()%></td>
 											<td><%=admList.get(i).getNome()%></td>
 											<td><%=admList.get(i).getCpf()%></td>
+											<td><%=admList.get(i).getLogin()%></td>
+											<td><%=admList.get(i).getDataNascimento()%></td>
 											<td><%=admList.get(i).getTelefone()%></td>
-											<td><%=admList.get(i).getEmail()%></td>											
+											<td><%=admList.get(i).getEmail()%></td>
+											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>											
                                         </tr>
                                     <%} %>
                                     </tbody>

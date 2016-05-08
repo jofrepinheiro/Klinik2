@@ -184,23 +184,34 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Alterar</th>
-											<th>Nascimento</th>
-                                            <th>Nome</th>
+                                        	<th>Nome</th>
 											<th>CPF</th>
+											<th>Login</th>
+											<th>Nascimento</th>											
 											<th>Telefone</th>
-                                            <th>Email</th> 
+                                            <th>Email</th>
+                                            <th>Turno</th>
+                                            <th>Alterar</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <% for(int i=0; i < secretarioList.size();i++){%>
 										<tr class="odd gradeX">
-											<td><a href="cadastroSec.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-											<td><%=secretarioList.get(i).getDataNascimento()%></td>
+											
 											<td><%=secretarioList.get(i).getNome()%></td>
 											<td><%=secretarioList.get(i).getCpf()%></td>
+											<td><%=secretarioList.get(i).getLogin()%></td>
+											<td><%=secretarioList.get(i).getDataNascimento()%></td>
 											<td><%=secretarioList.get(i).getTelefone()%></td>
-											<td><%=secretarioList.get(i).getEmail()%></td>											
+											<td><%=secretarioList.get(i).getEmail()%></td>
+											<td>
+											<%switch(secretarioList.get(i).getTurno()){
+												case 1: %>Manhã<% break;
+												case 2: %>Tarde<% break;
+												case 3: %>Noite<% break;
+											}%>
+											</td>
+											<td><a href="cadastroSec.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>											
                                         </tr>
                                     <%} %>
                                     </tbody>

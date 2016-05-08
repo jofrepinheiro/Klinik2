@@ -184,23 +184,27 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                        	<th>Alterar</th>
-											<th>Nascimento</th>
-                                            <th>Nome</th>
-											<th>CPF</th>
+                                        	<th>Nome</th>
+                                        	<th>CPF</th>
+                                        	<th>Login</th>
+											<th>Nascimento</th>                                            
 											<th>Telefone</th>
                                             <th>Email</th>
+                                            <th>Especialidades</th>
+                                            <th>Alterar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <% for(int i=0; i < medicoList.size();i++){%>
 										<tr class="odd gradeX">
-											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.jpg"></a> </td>
-											<td><%=medicoList.get(i).getDataNascimento()%></td>
 											<td><%=medicoList.get(i).getNome()%></td>
 											<td><%=medicoList.get(i).getCpf()%></td>
+											<td><%=medicoList.get(i).getLogin()%></td>
+											<td><%=medicoList.get(i).getDataNascimento()%></td>
 											<td><%=medicoList.get(i).getTelefone()%></td>
-											<td><%=medicoList.get(i).getEmail()%></td>											
+											<td><%=medicoList.get(i).getEmail()%></td>
+											<td><%=medicoList.get(i).getEspecialidade()%> <%if(medicoList.get(i).getEspecialidade2()!= null){%>, <%=medicoList.get(i).getEspecialidade2()%><%} %></td>	
+											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>										
                                         </tr>
                                     <%} %>
                                     </tbody>
