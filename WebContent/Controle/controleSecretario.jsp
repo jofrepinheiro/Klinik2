@@ -74,7 +74,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
   if(!cpfValido){
-	  response.sendRedirect("../FrontEnd/pages/cadastroSec.html?erro=1");
+	  response.sendRedirect("../FrontEnd/pages/cadastroSec.jsp?erro=1");
   }
   
   endereco.setBairro(bairro);

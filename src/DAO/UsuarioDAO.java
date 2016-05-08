@@ -27,7 +27,7 @@ public class UsuarioDAO {
 		
 		statement.close();
 		con.close();
-		if (nome != null){
+		if (nome != ""){
 			return false;
 		}else{
 			return true;

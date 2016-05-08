@@ -78,7 +78,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
   if(!cpfValido){
-	  response.sendRedirect("../FrontEnd/pages/cadastroMedico.html?erro=1");
+	  response.sendRedirect("../FrontEnd/pages/cadastroMedico.jsp?erro=1");
   }
   
   endereco.setBairro(bairro);
