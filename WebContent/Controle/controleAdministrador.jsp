@@ -42,7 +42,6 @@ if (action.equalsIgnoreCase("Cadastrar")){
   
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
-  System.out.println("CPF Valido : "+cpfValido);
   if(cpfValido == false){
 	  response.sendRedirect("../FrontEnd/pages/cadastroAdmin.jsp?erro=1");
 	  System.out.println("Aqui 1");
@@ -79,6 +78,8 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	
 	  enderecoDAO.cadastrarEndereco(endereco);
 	  administradorDAO.cadastrarAdministrador(administrador);
+	  response.sendRedirect("../FrontEnd/pages/listaAdmin.jsp?sucesso=1");
+
   }
 }
  %>

@@ -73,18 +73,22 @@ if (action.equalsIgnoreCase("Cadastrar")){
   
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
-  if(!cpfValido){
-	  response.sendRedirect("../FrontEnd/pages/cadastroSec.jsp?erro=1");
+  if(cpfValido == false){
+	  response.sendRedirect("../FrontEnd/pages/cadastroAdmin.jsp?erro=1");
+	  System.out.println("Aqui 1");
+  }else{
+  
+	  endereco.setBairro(bairro);
+	  endereco.setComplemento(complemento);
+	  endereco.setCEP(cep);
+	  endereco.setLogradouro(logradouro);
+	  endereco.setNumero(Integer.parseInt(numero));
+	  
+	  enderecoDAO.cadastrarEndereco(endereco);
+	  secretarioDAO.cadastrarSecretario(secretario);
+	  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=1");
   }
-  
-  endereco.setBairro(bairro);
-  endereco.setComplemento(complemento);
-  endereco.setCEP(cep);
-  endereco.setLogradouro(logradouro);
-  endereco.setNumero(Integer.parseInt(numero));
-  
-  enderecoDAO.cadastrarEndereco(endereco);
-  secretarioDAO.cadastrarSecretario(secretario);
+
 }
 //}
 %>

@@ -77,19 +77,22 @@ if (action.equalsIgnoreCase("Cadastrar")){
   
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
-  if(!cpfValido){
+  if(cpfValido == false){
 	  response.sendRedirect("../FrontEnd/pages/cadastroMedico.jsp?erro=1");
+	  System.out.println("Aqui 1");
+  }else{
+  
+	  endereco.setBairro(bairro);
+	  endereco.setComplemento(complemento);
+	  endereco.setCEP(cep);
+	  endereco.setLogradouro(logradouro);
+	  endereco.setNumero(Integer.parseInt(numero));
+	   
+	  enderecoDAO.cadastrarEndereco(endereco);
+	  medicoDAO.cadastrarMedico(medico);
+	  response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=1");
   }
-  
-  endereco.setBairro(bairro);
-  endereco.setComplemento(complemento);
-  endereco.setCEP(cep);
-  endereco.setLogradouro(logradouro);
-  endereco.setNumero(Integer.parseInt(numero));
-  
-  
-  enderecoDAO.cadastrarEndereco(endereco);
-  medicoDAO.cadastrarMedico(medico);
+
 }
 //}
 %>

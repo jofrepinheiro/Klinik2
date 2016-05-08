@@ -24,10 +24,11 @@ public class UsuarioDAO {
 		while (rs.next()){
 			nome = rs.getString("nome");
 		}
-		
+		System.out.println("CPF Aqui" + cpf);
+		System.out.println("Nome aqui" + nome);
 		statement.close();
 		con.close();
-		if (nome != ""){
+		if ((nome != null)){
 			return false;
 		}else{
 			return true;
