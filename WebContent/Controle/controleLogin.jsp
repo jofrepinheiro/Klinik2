@@ -33,6 +33,9 @@ if (action.equalsIgnoreCase("Logar")){
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   usuario = usuarioDAO.loginUsuario(login, senha);
 
+  String cpf = usuario.getCpf();
+  
+  
   if(usuario != null){
 	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
 	  session.putValue("loginUsuario", usuario.getNome()); //Grava a session com o Login

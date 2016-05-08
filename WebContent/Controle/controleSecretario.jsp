@@ -1,3 +1,4 @@
+<%@page import="DAO.UsuarioDAO"%>
 <%@page import="model.Secretario"%>
 <%@page import="DAO.SecretarioDAO"%>
 <%@page import="model.Endereco"%>
@@ -69,6 +70,12 @@ if (action.equalsIgnoreCase("Cadastrar")){
   secretario.setTelefone(telefone);
   secretario.setCpf(cpf);
   secretario.setTurno(Integer.parseInt(turno));
+  
+  UsuarioDAO usuarioDAO = new UsuarioDAO();
+  boolean cpfValido = usuarioDAO.validarCpf(cpf);
+  if(!cpfValido){
+	  response.sendRedirect("../FrontEnd/pages/cadastroSec.html?erro=1");
+  }
   
   endereco.setBairro(bairro);
   endereco.setComplemento(complemento);

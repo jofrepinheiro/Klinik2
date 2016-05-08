@@ -1,3 +1,4 @@
+<%@page import="DAO.UsuarioDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="DAO.AdministradorDAO"%>
 <%@page import="DAO.EnderecoDAO"%>
@@ -38,6 +39,12 @@ if (action.equalsIgnoreCase("Cadastrar")){
   cpf = request.getParameter("cpf");
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
+  
+  UsuarioDAO usuarioDAO = new UsuarioDAO();
+  boolean cpfValido = usuarioDAO.validarCpf(cpf);
+  if(!cpfValido){
+	  response.sendRedirect("../FrontEnd/pages/cadastroAdmin.html?erro=1");
+  }
   
   bairro = request.getParameter("bairro");
   logradouro = request.getParameter("logradouro");
