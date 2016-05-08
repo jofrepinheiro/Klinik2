@@ -1,8 +1,12 @@
+<%@page import="DAO.ConsultaDAO"%>
+<%@page import="model.Consulta"%>
+<%@page import="DAO.PacienteDAO"%>
+<%@page import="model.Paciente"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Klinik - ClÃ­nica MÃ©dica</title>
+    <title>Klinik - Clínica Médica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,10 +35,19 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-<% 
+<%      
+	String perfil = (String) session.getAttribute("perfilUsuario");
+	if(perfil != "2"){
+	  response.sendRedirect("login.html?erro=2");
+	}
+	
+	ArrayList<Consulta> consultaHistoricoList = new ArrayList<>();
+    ConsultaDAO consultaDAO = new ConsultaDAO();
+    consultaHistoricoList = consultaDAO.getConsultasHistoricoList();
     
-    
+    PacienteDAO pacienteDAO = new PacienteDAO();
 %>
+
 
 </head>
 
@@ -58,10 +71,10 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Nome de UsuÃ¡rio <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  Nome de Usuário <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> InformaÃ§Ãµes </a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -77,14 +90,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexMed.html"><i class="glyphicon glyphicon-home"></i>  Home</a>
+                            <a href="indexMed.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a>
                         </li>
 						
                         <li>
-                            <a href="listaConsultaDia.html"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
+                            <a href="listaConsultaDia.jsp"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
                         </li>
                         <li>
-                            <a href="listaConsultaHistorico.html"><i class="glyphicon glyphicon-book"> </i>  HistÃ³rico de Consultas</a>
+                            <a href="#"><i class="glyphicon glyphicon-book"> </i>  Histórico de Consultas</a>
                         </li>
                     </ul>
                 </div>
@@ -101,6 +114,8 @@
 				<h2>Consultas</h2>
 					<div class="agenda">
 						<div class="table-responsive" style="margin-right: 2%">
+						<%if(consultaHistoricoList.size() == 0) {%><h3>Você ainda não atendeu consultas. :(</h3>
+							<%}else{ %>
 							<table class="table table-condensed table-bordered">
 								<thead>
 									<tr>
@@ -111,30 +126,46 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Single event in a single day -->
+									<% for(int i=0; i < consultaHistoricoList.size();i++){%>
 									<tr>
 										<td class="agenda-date" class="active" rowspan="1">
-											<div class="dayofmonth">14</div>
-											<div class="dayofweek">Sexta-Feira</div>
-											<div class="shortdate text-muted">Abril, 2016</div>
-										</td>
-										<td>
-											14:00h
-										</td>
-										<td>
-											<div>
-												JoÃ£o da Silva
+											<% String[] dmy = consultaHistoricoList.get(i).getDataConsulta().toString().split("-"); %>
+											<div class="dayofmonth"><%= dmy[2] %></div>
+											<div class="dayofweek">
+												<%switch(dmy[1]){
+												case "1": %>Janeiro<% break;
+												case "2": %>Fevereiro<% break;
+												case "3": %>Março<% break;
+												case "4": %>Abril<% break;
+												case "5": %>Maio<% break;
+												case "6": %>Junho<% break;
+												case "7": %>Julho<% break;
+												case "8": %>Agosto<% break;
+												case "9": %>Setembro<% break;
+												case "10": %>Outubro<% break;
+												case "11": %>Novembro<% break;
+												case "12": %>Dezembro<% break;
+												} %>
 											</div>
+											<div class="shortdate text-muted"><%= dmy[0] %></div>
+										</td>
+										<td>
+											<%= consultaHistoricoList.get(i).getHorarioConsulta().toString().substring(0, 5) %>
+										</td>
+										<td>
+											<%= pacienteDAO.getPaciente(consultaHistoricoList.get(i).getIdPaciente()).getNome() %>
 										</td>
 										<td>
 											<div>
-												Dor de Barriga
+												<%= consultaHistoricoList.get(i).getMotivo() %>
 											</div>
 										</td>										
 									</tr>
+									<%} %>
 								</tbody>
-
+			
 							</table>
+						<%}%>
 						</div>
 					</div>
 				</div>

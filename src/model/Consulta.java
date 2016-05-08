@@ -11,6 +11,7 @@ public class Consulta {
 	private Date dataConsulta;
 	private Time horarioConsulta;
 	private String motivo;
+	private int atendida;
 	
 	public int getIdConsulta() {
 		return idConsulta;
@@ -53,5 +54,13 @@ public class Consulta {
 	}
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
+	}
+	
+	public int getAtendida(){
+		return this.atendida;
+	}
+	
+	public void setAtendida(int atendida){
+		this.atendida = atendida;
 	}
 }

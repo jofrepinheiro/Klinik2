@@ -1,5 +1,7 @@
 <%@page import="DAO.ConsultaDAO"%>
 <%@page import="model.Consulta"%>
+<%@page import="DAO.PacienteDAO"%>
+<%@page import="model.Paciente"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -43,7 +45,8 @@
 	ArrayList<Consulta> consultaDiaList = new ArrayList<>();
     ConsultaDAO consultaDAO = new ConsultaDAO();
     consultaDiaList = consultaDAO.getConsultasDiaList();
-
+    
+    PacienteDAO pacienteDAO = new PacienteDAO();
 %>
 
 </head>
@@ -91,10 +94,10 @@
                         </li>
 						
                         <li>
-                            <a href="listaConsultaDia.html"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
                         </li>
                         <li>
-                            <a href="listaConsultaHistorico.html"><i class="glyphicon glyphicon-book"> </i>  Histórico de Consultas</a>
+                            <a href="listaConsultaHistorico.jsp"><i class="glyphicon glyphicon-book"> </i>  Histórico de Consultas</a>
                         </li>
                     </ul>
                 </div>
@@ -111,34 +114,42 @@
 				<h2>Agenda do Dia</h2>
 					<div class="agenda">
 						<div class="table-responsive" style="margin-right: 2%">
-							<table class="table table-condensed table-bordered">
-								<thead>
-									<tr>
-										<th>Atender Paciente</th>
-										<th>Hora</th>
-										<th>Paciente</th>
-										<th>Queixa</th>
-									</tr>
-								</thead>
-								<tbody>
-									<!-- Single event in a single day -->
-									<tr>
-										<td><a href="cadastroMedico.jsp?action=alterar"><center><img src="img/atender.png"></center></a> </td>
-										<td class="agenda-date" class="active" rowspan="1">
-											<div class="dayofmonth">14:00</div>
-										</td>
-										<td>João da Silva</td>
-										<td>Dor de barriga</td>
-									</tr>
-								</tbody>
-							</table>
+							<%if(consultaDiaList.size() == 0) {%><h3>Você não possui consultas hoje. :(</h3>
+							<%}else{ %>
+								<table class="table table-condensed table-bordered">
+									<thead>
+										<tr>
+											<th>Hora</th>
+											<th>Paciente</th>
+											<th>Queixa</th>
+											<th>Atender</th>
+										</tr>
+									</thead>
+									
+									
+									<tbody>
+										<!-- Single event in a single day -->
+										<% for(int i=0; i < consultaDiaList.size();i++){%>
+										<tr>
+											<td class="agenda-date" class="active" rowspan="1">
+												<div class="dayofmonth"><%= consultaDiaList.get(i).getHorarioConsulta().toString().substring(0, 5) %></div>
+											</td>
+											<td><%= pacienteDAO.getPaciente(consultaDiaList.get(i).getIdPaciente()).getNome() %></td>
+											<td><%=consultaDiaList.get(i).getMotivo() %></td>
+											<td><a href="cadastroMedico.jsp?action=alterar"><center><img src="img/atender.png"></center></a> </td>
+										</tr>
+										<%} %>
+									</tbody>
+							
+								</table>
+							<%} %>
 						</div>
 					</div>
 				</div>
         </div>
         <!-- /#page-wrapper -->
 
-		<script>
+	<script>
 			$(function() {
 				$("td[colspan=3]").find("p").hide();
 				$("table").click(function(event) {

@@ -53,6 +53,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   consulta.setHorarioConsulta(hora);
   consulta.setMotivo(motivo);
   consulta.setIdPagamento(1);
+  consulta.setAtendida(0);
   
   consultaDAO.cadastrarConsulta(consulta);
 }
