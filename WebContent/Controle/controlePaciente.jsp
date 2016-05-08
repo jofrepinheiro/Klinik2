@@ -47,7 +47,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
   complemento = request.getParameter("complemento");
   cep = request.getParameter("cep");
   
+  
+  
   System.out.println(nome + cpf + sexo + dataNascimento);
+
+  System.out.println(bairro + logradouro);
   
   Endereco endereco = new Endereco();
   Paciente paciente = new Paciente();
@@ -73,6 +77,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   endereco.setNumero(Integer.parseInt(numero));
   
   enderecoDAO.cadastrarEndereco(endereco);
+  
   pacienteDAO.cadastrarPaciente(paciente);
 }
 //}

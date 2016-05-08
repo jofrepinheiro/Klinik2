@@ -46,7 +46,7 @@ public class Principal {
 //		enderecoDAO.cadastrarEndereco(endereco);
 		UsuarioDAO usu = new UsuarioDAO();
 		Usuario usuario = new Usuario();
-		usuario = usu.loginUsuario("John", "123456");
+		usuario = usu.loginUsuario("UsuarioAdmin1", "12345");
 		if(usuario != null){
 			System.out.println(usuario.getNome());
 		}else{
