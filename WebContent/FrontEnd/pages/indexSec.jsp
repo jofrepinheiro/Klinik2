@@ -97,10 +97,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroPaciente.html">Paciente</a>
+                                    <a href="cadastroPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroConsulta.html">Consulta</a>
+                                    <a href="cadastroConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
