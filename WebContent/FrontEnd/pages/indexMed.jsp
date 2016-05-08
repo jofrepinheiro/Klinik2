@@ -82,7 +82,7 @@
                         </li>
 						
                         <li>
-                            <a href="listaConsultaDia.html"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
+                            <a href="listaConsultaDia.jsp"><i class="fa fa-table fa-fw"></i> Agenda do Dia</a>
                         </li>
                         <li>
                             <a href="listaConsultaHistorico.html"><i class="glyphicon glyphicon-book"> </i>  Histórico de Consultas</a>

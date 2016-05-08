@@ -123,24 +123,12 @@
 								<tbody>
 									<!-- Single event in a single day -->
 									<tr>
+										<td><a href="cadastroMedico.jsp?action=alterar"><center><img src="img/atender.png"></center></a> </td>
 										<td class="agenda-date" class="active" rowspan="1">
 											<div class="dayofmonth">14:00</div>
 										</td>
-										<td>
-											<div>
-												João da Silva
-											</div>
-										</td>
-										<td>
-											<div>
-												Dor de Barriga
-											</div>
-										</td>
-										<td>
-											<div>
-												Dor de Barriga
-											</div>
-										</td>
+										<td>João da Silva</td>
+										<td>Dor de barriga</td>
 									</tr>
 								</tbody>
 							</table>
