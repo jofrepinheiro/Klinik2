@@ -55,13 +55,13 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Olá, Secretário <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
-                        <li><a href="controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../../Controle/controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -158,66 +158,7 @@
 											<div class="dayofweek">Segunda-Feira</div>
 											<div class="shortdate text-muted">Abril, 2016</div>
 										</td>
-										<td>
-											07:00h
-										</td>
-										<td>
-											<div>
-												José Xisto
-											</div>
-										</td>
-										<td>
-											<div>
-												Dr. João Paulo
-											</div>
-										</td>
-										<td>
-											<div>
-												Dor de ouvido 
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											07:30h
-										</td>
-										<td>
-											<div>
-												Maria Juanita
-											</div>
-										</td>
-										<td>
-											<div>
-												Dr. João Paulo
-											</div>
-										</td>
-										<td>
-											<div>
-												Dor de garganta 
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											09:30h
-										</td>
-										<td>
-											<div>
-												João das Neves
-											</div>
-										</td>
-										<td>
-											<div>
-												Dr. Railan Cheetos
-											</div>
-										</td>
-										<td>
-											<div>
-												Dores agudas no abdómen 
-											</div>
-										</td>
-									</tr>
-									
+
 									
 								</tbody>
 

@@ -38,13 +38,16 @@
     
 <%      
 	String perfil = (String) session.getAttribute("perfilUsuario");
+	
+	
 	if(perfil != "2"){
 	  response.sendRedirect("login.html?erro=2");
 	}
 	
+	int idMedico = (int) session.getAttribute("idMedico");
 	ArrayList<Consulta> consultaDiaList = new ArrayList<>();
     ConsultaDAO consultaDAO = new ConsultaDAO();
-    consultaDiaList = consultaDAO.getConsultasDiaList();
+    consultaDiaList = consultaDAO.getConsultasDiaList(idMedico);
     
     PacienteDAO pacienteDAO = new PacienteDAO();
 %>
@@ -71,13 +74,13 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Nome de Usuário <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
                         </li>
 							 <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../../Controle/controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -90,7 +93,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexMed.html"><i class="glyphicon glyphicon-home"></i>  Home</a>
+                            <a href="indexMed.jsp"><i class="glyphicon glyphicon-home"></i>  Home</a>
                         </li>
 						
                         <li>

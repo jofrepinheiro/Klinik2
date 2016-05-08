@@ -3,6 +3,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" language="javascript">
+	if(getVar("sucesso") == 1){
+		alert("Cadastro realizado com Sucesso!")
+	}
+	
+	function urlDecode(string, overwrite){
+		if(!string || !string.length){
+			return {};
+		}
+		var obj = {};
+		var pairs = string.split('&');
+		var pair, name, value;
+		var lsRegExp = /\+/g;
+		for(var i = 0, len = pairs.length; i < len; i++){
+			pair = pairs[i].split('=');
+			name = unescape(pair[0]);
+			value = unescape(pair[1]).replace(lsRegExp, " ");
+			//value = decodeURIComponent(pair[1]).replace(lsRegExp, " ");
+			if(overwrite !== true){
+				if(typeof obj[name] == "undefined"){
+					obj[name] = value;
+				}else if(typeof obj[name] == "string"){
+					obj[name] = [obj[name]];
+					obj[name].push(value);
+				}else{
+					obj[name].push(value);
+				}
+			}else{
+				obj[name] = value;
+			}
+		}
+		return obj;
+	}
+
+
+	function getVar(param){
+		var wl = window.location.href;
+		var params = urlDecode(wl.substring(wl.indexOf("?")+1));
+		return(params[param]);
+	}
+</script>
 <%	  
 		String perfil = (String) session.getAttribute("perfilUsuario");
 		if(perfil != "1"){

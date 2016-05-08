@@ -63,8 +63,8 @@ public class ConsultaDAO {
 	public void cadastrarConsulta(Consulta consulta) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		
-		String sql = "INSERT INTO CONSULTA (dataConsulta, horarioConsulta, motivo, idMedico, idPaciente, idPagamento, atendida) "
-				+ "VALUES (?,?,?,?,?,?, ?)";
+		String sql = "INSERT INTO CONSULTA (dataConsulta, horarioConsulta, motivo, idMedico, idPaciente, atendida) "
+				+ "VALUES (?,?,?,?,?,?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setDate(1,consulta.getDataConsulta());
@@ -72,8 +72,7 @@ public class ConsultaDAO {
 		statement.setString(3, consulta.getMotivo());
 		statement.setInt(4, consulta.getIdMedico());
 		statement.setInt(5, consulta.getIdPaciente());
-		statement.setInt(6, consulta.getIdPagamento());
-		statement.setInt(7, consulta.getAtendida());
+		statement.setInt(6, consulta.getAtendida());
 		statement.executeUpdate();
 		
 		statement.close();
@@ -108,13 +107,13 @@ public class ConsultaDAO {
 		con.close();
 	}
 	
-	public ArrayList<Consulta> getConsultasDiaList() throws SQLException{
+	public ArrayList<Consulta> getConsultasDiaList(int idMedico) throws SQLException{
 		ArrayList<Consulta> consultasList = new ArrayList<>();
 		Connection con = new Conexao().getConnection();		
 		
-		String sql = "select * from consulta where dataconsulta = CURRENT_DATE and atendida != 1 order by horarioconsulta";
-		
+		String sql = "select * from consulta where dataconsulta = CURRENT_DATE and atendida != 1 and idMedico=? order by horarioconsulta";
 		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idMedico);
 		ResultSet rs = statement.executeQuery();
 		
 		while (rs.next()){

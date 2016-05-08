@@ -117,6 +117,23 @@ public class MedicoDAO {
 		return medico;
 	}
 	
+	public int getIdMedico(int idUsuario) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		String sql = "SELECT idMedico FROM MEDICO WHERE idUsuario=?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idUsuario);
+		ResultSet rs = statement.executeQuery();
+		int idMedico = -1;
+		while (rs.next()){
+			idMedico = rs.getInt(1);
+		}
+	
+		statement.close();
+		con.close();
+		
+		return idMedico;
+	}
+	
 	public void cadastrarMedico(Medico medico) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

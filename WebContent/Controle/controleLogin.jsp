@@ -1,3 +1,4 @@
+<%@page import="DAO.MedicoDAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="DAO.UsuarioDAO"%>
 <%@page import="model.Usuario"%>
@@ -48,8 +49,11 @@ if (action.equalsIgnoreCase("Logar")){
 		  response.sendRedirect("../FrontEnd/pages/indexSec.jsp");
 	  }
 	  if(tipoUsuario == 2){
+		  MedicoDAO medicoDAO = new MedicoDAO();
 		  session.putValue("perfilUsuario", "2"); 
+		  int idMedico = medicoDAO.getIdMedico(usuario.getIdUsuario());
 		  response.sendRedirect("../FrontEnd/pages/indexMed.jsp");
+		  session.putValue("idMedico", idMedico); 
 	  }
   }else{
 	  response.sendRedirect("../FrontEnd/pages/login.html?erro=1");
@@ -65,6 +69,7 @@ if (action.equalsIgnoreCase("Logout")){
 	  session.putValue("perfilUsuario", null); 
 	  session.putValue("nomeUsuario", null); 
 	  session.putValue("loginUsuario", null); 
+	  session.putValue("idMedico", null);
 	  response.sendRedirect("../FrontEnd/pages/login.html");
 
 }

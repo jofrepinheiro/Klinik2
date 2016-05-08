@@ -10,6 +10,13 @@
 <html lang="en">
 
 <head>
+<%	  
+		String perfil = (String) session.getAttribute("perfilUsuario");
+		if(perfil != "1"){
+			  response.sendRedirect("login.html?erro=2");
+		}
+
+%>
 
 	<script type="text/javascript" language="javascript">
 			function valida_form(){
@@ -87,7 +94,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  Olá, Secretário <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <%=session.getAttribute("nomeUsuario")%> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Informações </a>
@@ -113,10 +120,10 @@
                             <a href="#"><i class="fa fa-table fa-fw"> </i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaPaciente.html">Paciente</a>
+                                    <a href="listaPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="listaConsulta.html">Consulta</a>
+                                    <a href="listaConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->

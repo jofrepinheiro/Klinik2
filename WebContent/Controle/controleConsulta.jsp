@@ -43,7 +43,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
   java.sql.Date data = new java.sql.Date(format.parse(dataConsulta).getTime());
 
-  format = new SimpleDateFormat("HH:MM");
+  format = new SimpleDateFormat("HH:mm");
   java.sql.Time hora = new java.sql.Time(format.parse(horaConsulta).getTime());
   
   
@@ -52,10 +52,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
   consulta.setDataConsulta(data);
   consulta.setHorarioConsulta(hora);
   consulta.setMotivo(motivo);
-  consulta.setIdPagamento(1);
+  //consulta.setIdPagamento(); 
   consulta.setAtendida(0);
   
   consultaDAO.cadastrarConsulta(consulta);
+  response.sendRedirect("../FrontEnd/pages/indexSec.jsp?sucesso=1");
 }
 //}
 %>
