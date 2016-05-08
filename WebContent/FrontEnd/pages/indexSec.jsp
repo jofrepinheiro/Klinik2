@@ -85,10 +85,10 @@
                             <a href="#"><i class="fa fa-table fa-fw"> </i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaPaciente.html">Paciente</a>
+                                    <a href="listaPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="listaConsulta.html">Consulta</a>
+                                    <a href="listaConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->

@@ -1,9 +1,16 @@
+<%@page import="model.Paciente"%>
+<%@page import="DAO.PacienteDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<% 
+	ArrayList<Paciente> pacienteList = new ArrayList<>();
+	PacienteDAO pacienteDAO = new PacienteDAO();
+	pacienteList = pacienteDAO.getPacienteList();
+%>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +79,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexSec.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexSec.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
 						<li>
@@ -125,48 +132,19 @@
 											<th>Data de Nascimento</th>
                                             <th>Telefone</th>
                                             <th>Email</th> 
-											<th>Endereço</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                       <% for(int i=0; i < pacienteList.size();i++){%>
                                         <tr class="odd gradeX">
-                                            <td>João da Silva</td>
-                                            <td>123.456.789-00</td>
-                                            <td>M</td>
-											<td>11/04/1900</td>
-											<td>(79) 3200-1111</td>
-											<td>joao@silva.com</td>
-											<td>Rua dos Tijolos Amarelos, 200. Bairro das Maravilhas</td>
+											<td><%=pacienteList.get(i).getNome()%></td>
+											<td><%=pacienteList.get(i).getCpf()%></td>
+											<td><%=pacienteList.get(i).getSexo()%></td>
+											<td><%=pacienteList.get(i).getDataNasc()%></td>
+											<td><%=pacienteList.get(i).getTelefone()%></td>
+											<td><%=pacienteList.get(i).getEmail()%></td>											
                                         </tr>
-										
-										<tr class="odd gradeX">
-                                            <td>José Xisto</td>
-                                            <td>987.654.321-00</td>
-                                            <td>M</td>
-											<td>11/04/1980</td>
-											<td>(79) 3212-1221</td>
-											<td>xisto_2002@googlemail.com</td>
-											<td>Rua Maranata de Lagarto, 25. Bairro Centro</td>
-                                        </tr>
-										<tr class="odd gradeX">
-                                            <td>Maria Juanita</td>
-                                            <td>333.444.555-66</td>
-                                            <td>F</td>
-											<td>22/04/2003</td>
-											<td>(79) 3200-1171</td>
-											<td>juanita_gatinha@hotmail.com</td>
-											<td>Rua Jajaja, 2. Bairro da Colômbia</td>
-                                        </tr>
-										
-										<tr class="odd gradeX">
-                                            <td>João das Neves</td>
-                                            <td>000.666.111-00</td>
-                                            <td>M</td>
-											<td>11/04/1000</td>
-											<td>(79) 3200-6661</td>
-											<td>notdead@gmail.com</td>
-											<td>Rua Remembers, 3000. Bairro Winterfell</td>
-                                        </tr>
+                                        <%} %>				
                                     </tbody>
                                 </table>
                             </div>
