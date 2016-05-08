@@ -31,10 +31,7 @@ if (action.equalsIgnoreCase("Logar")){
 
   Usuario usuario = new Usuario();
   UsuarioDAO usuarioDAO = new UsuarioDAO();
-  usuario = usuarioDAO.loginUsuario(login, senha);
-
-  String cpf = usuario.getCpf();
-  
+  usuario = usuarioDAO.loginUsuario(login, senha);  
   
   if(usuario != null){
 	  int tipoUsuario = usuarioDAO.getTipoUsuario(usuario.getIdUsuario());
