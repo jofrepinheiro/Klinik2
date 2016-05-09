@@ -1,3 +1,5 @@
+<%@page import="model.DadosConsulta"%>
+<%@page import="DAO.DadosConsultaDAO"%>
 <%@page import="DAO.ConsultaDAO"%>
 <%@page import="model.Consulta"%>
 <%@page import="DAO.PacienteDAO"%>
@@ -46,6 +48,8 @@
     consultaHistoricoList = consultaDAO.getConsultasHistoricoList();
     
     PacienteDAO pacienteDAO = new PacienteDAO();
+    
+    
 %>
 
 
@@ -123,6 +127,7 @@
 										<th>Hora</th>
 										<th>Paciente</th>
 										<th>Queixa</th>
+										<th>Dados da Consulta</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -130,7 +135,7 @@
 									<% for(int i=0; i < consultaHistoricoList.size();i++){%>
 									<tr>
 										<td class="agenda-date" class="active" rowspan="1">
-											<%  dmy = consultaHistoricoList.get(i).getDataConsulta().toString().split("-"); %>
+											<%  dmy = consultaHistoricoList.get(i).getDataConsulta().toString().split("-"); %>    										
 											<div class="dayofmonth"><%= dmy[2] %></div>
 											<div class="dayofweek">
 												<%switch(dmy[1]){
@@ -160,8 +165,18 @@
 											<div>
 												<%= consultaHistoricoList.get(i).getMotivo() %>
 											</div>
-										</td>										
-									</tr>
+										</td>		
+										<% 
+											DadosConsultaDAO dadosConsultaDAO = new DadosConsultaDAO();
+    										DadosConsulta dadosConsulta = new DadosConsulta();	
+    										dadosConsulta = dadosConsultaDAO.getDadosConsulta(consultaHistoricoList.get(i).getIdConsulta());
+    									%>
+    									<td>
+											<div>
+												<%=  dadosConsulta.getDescricao()%> <b> <%=  dadosConsulta.getHorarioRegistro()%></b>
+											</div>
+										</td>
+    								</tr>
 									<%} %>
 								</tbody>
 			
