@@ -151,7 +151,6 @@ public class ConsultaDAO {
 		return consultasList;
 	}	
 	
-<<<<<<< HEAD
 	public void atualizarPagamento(int idpagamento, int idconsulta) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		
@@ -188,7 +187,8 @@ public class ConsultaDAO {
 		statement.close();
 		con.close();
 		return consultasList;
-=======
+	}
+	
 	public void setAtendida(int idConsulta) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -204,6 +204,5 @@ public class ConsultaDAO {
 		
 		statement.close();
 		con.close();
->>>>>>> db3391360c87b394fc73d5e4a248dcb1711633bd
 	}
 }
