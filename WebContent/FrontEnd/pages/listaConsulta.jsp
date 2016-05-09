@@ -7,7 +7,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<script type="text/javascript" language="javascript">
+	if(getVar("sucesso") == 1){
+		alert("Cadastro realizado com Sucesso!")
+	}
+	if(getVar("sucesso") == 2){
+		alert("Atualizacao realizada com Sucesso!")
+	}
+	
+	function urlDecode(string, overwrite){
+		if(!string || !string.length){
+			return {};
+		}
+		var obj = {};
+		var pairs = string.split('&');
+		var pair, name, value;
+		var lsRegExp = /\+/g;
+		for(var i = 0, len = pairs.length; i < len; i++){
+			pair = pairs[i].split('=');
+			name = unescape(pair[0]);
+			value = unescape(pair[1]).replace(lsRegExp, " ");
+			//value = decodeURIComponent(pair[1]).replace(lsRegExp, " ");
+			if(overwrite !== true){
+				if(typeof obj[name] == "undefined"){
+					obj[name] = value;
+				}else if(typeof obj[name] == "string"){
+					obj[name] = [obj[name]];
+					obj[name].push(value);
+				}else{
+					obj[name].push(value);
+				}
+			}else{
+				obj[name] = value;
+			}
+		}
+		return obj;
+	}
 
+
+	function getVar(param){
+		var wl = window.location.href;
+		var params = urlDecode(wl.substring(wl.indexOf("?")+1));
+		return(params[param]);
+	}
+</script>
 <head>
 <%      
 	String perfil = (String) session.getAttribute("perfilUsuario");
@@ -98,10 +141,10 @@
                             <a href="#"><i class="fa fa-table fa-fw"> </i> Gerenciamento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaPaciente.html">Paciente</a>
+                                    <a href="listaPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="listaConsulta.html">Consulta</a>
+                                    <a href="listaConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -110,10 +153,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroPaciente.html">Paciente</a>
+                                    <a href="cadastroPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroConsulta.html">Consulta</a>
+                                    <a href="cadastroConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->

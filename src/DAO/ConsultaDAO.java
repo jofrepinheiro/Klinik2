@@ -93,6 +93,7 @@ public class ConsultaDAO {
 		statement.setDate(1,consulta.getDataConsulta());
 		statement.setTime(2, consulta.getHorarioConsulta());
 		statement.setString(3, consulta.getMotivo());
+		statement.setInt(4, consulta.getIdConsulta());
 		statement.executeUpdate();
 		
 		statement.close();

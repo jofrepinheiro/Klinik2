@@ -16,26 +16,21 @@
 </head>
 <body>
 <%
-String action = request.getParameter("action"); 
+	String action = request.getParameter("action"); 
+	int idConsulta = Integer.parseInt(request.getParameter("idConsulta")); 
 
+	String paciente;
+	String medico;
+	String dataConsulta;
+	String horaConsulta;
+	String motivo;
 
 if (action.equalsIgnoreCase("Cadastrar")){
-	
-  // usuario e senha corretos
-  String paciente;
-  String medico;
-  String dataConsulta;
-  String horaConsulta;
-  String motivo;
-  
-
-  // dados informados no formulário
   paciente = request.getParameter("paciente");
   medico = request.getParameter("medico");
   dataConsulta = request.getParameter("data");
   horaConsulta = request.getParameter("hora");
   motivo = request.getParameter("motivo");
-  
   
   Consulta consulta = new Consulta();
   ConsultaDAO consultaDAO = new ConsultaDAO();
@@ -57,8 +52,36 @@ if (action.equalsIgnoreCase("Cadastrar")){
   
   consultaDAO.cadastrarConsulta(consulta);
   response.sendRedirect("../FrontEnd/pages/indexSec.jsp?sucesso=1");
+}else{
+	// dados informados no formulário
+	  paciente = request.getParameter("paciente");
+	  medico = request.getParameter("medico");
+	  dataConsulta = request.getParameter("data");
+	  horaConsulta = request.getParameter("hora");
+	  motivo = request.getParameter("motivo");
+	  
+	  
+	  Consulta consulta = new Consulta();
+	  ConsultaDAO consultaDAO = new ConsultaDAO();
+	  
+	  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	  java.sql.Date data = new java.sql.Date(format.parse(dataConsulta).getTime());
+
+	  format = new SimpleDateFormat("HH:mm");
+	  java.sql.Time hora = new java.sql.Time(format.parse(horaConsulta).getTime());
+	  
+	  consulta.setIdConsulta(idConsulta);
+	  consulta.setIdPaciente(Integer.parseInt(paciente));
+	  consulta.setIdMedico(Integer.parseInt(medico));
+	  consulta.setDataConsulta(data);
+	  consulta.setHorarioConsulta(hora);
+	  consulta.setMotivo(motivo);
+	  //consulta.setIdPagamento(); 
+	  consulta.setAtendida(1);
+	  
+	  consultaDAO.alterarConsulta(consulta);
+	  response.sendRedirect("../FrontEnd/pages/listaConsulta.jsp?sucesso=2");
 }
-//}
 %>
 </body>
 </html>

@@ -11,26 +11,28 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<script>
-	function desabilitarPacienteMedico(paciente, medico){
-		alert("Entrou");
-		//ocument.forms["formCadastro"]["paciente"].value = paciente;
-		//document.forms["formCadastro"]["medico"].value = medico;
-		document.forms["formCadastro"]["paciente"].disable = true;
-		document.forms["formCadastro"]["medico"].disable = true;
-		alert("Deu erro");
-	}
-</script>
+
 <head>
 <%	  
 	String action = request.getParameter("action");
 	String data="";
 	String horario="";
-	int idConsulta = Integer.parseInt(request.getParameter("idConsulta")); 
+	String motivo="";
+	if(action == null){
+		action = "Cadastrar";
+	}else{
+		action = "Alterar";
+	}
+	
+	String consultaId = request.getParameter("idConsulta"); 
+	int idConsulta = 0;
+	if(consultaId != null){
+		idConsulta = Integer.parseInt(consultaId);
+	}
 
 	String perfil = (String) session.getAttribute("perfilUsuario");
 	if(perfil != "1"){
-			  response.sendRedirect("login.html?erro=2");
+		response.sendRedirect("login.html?erro=2");
 	}
 	
 	Consulta consulta = new Consulta();
@@ -47,11 +49,7 @@
 		data = format.format(consulta.getDataConsulta());
 		format = new SimpleDateFormat("HH:mm");
 		horario = format.format(consulta.getHorarioConsulta());
-		
-		String pacienteString = paciente.getCpf()+ " - " +  paciente.getNome();
-		String medicoString = medico.getCpf() + " - " + medico.getNome();
-		System.out.println("Estamos Aqui" + pacienteString + medicoString);
-		out.println("<script>desabilitarPacienteMedico('"+pacienteString+"','"+medicoString+"');</script>");
+		motivo = consulta.getMotivo();
 	}
 
 %>
@@ -199,8 +197,7 @@
 							Cadastro de Consulta
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleConsulta.jsp">
-								<input type="hidden" name="action" value="Cadastrar">
+                            <form method="post" role="form" name="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleConsulta.jsp?action=<%=action%>&idConsulta=<%=idConsulta%>">
 								<div class="row">
 									<div class="col-lg-12">
 										<div class = "form-group">
@@ -234,7 +231,7 @@
 										
 										<div class="form-group">
                                             <label>Queixa</label>
-                                            <textarea type="textarea" rows="5" class="form-control" name="motivo" placeholder="" value="<%=consulta.getMotivo()%>"></textarea>	
+                                            <textarea type="textarea" rows="5" class="form-control" name="motivo" placeholder="" value=""><%=motivo%></textarea>	
                                         </div>
 										
 									</div>
