@@ -196,7 +196,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="indexMed.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="indexAdmin.jsp"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
 						
                         <li>
