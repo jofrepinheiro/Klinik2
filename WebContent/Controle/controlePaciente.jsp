@@ -74,6 +74,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   enderecoDAO.cadastrarEndereco(endereco);
   
   pacienteDAO.cadastrarPaciente(paciente);
+  response.sendRedirect("../FrontEnd/pages/listaPaciente.jsp?sucesso=2");
 }
 //}
 %>

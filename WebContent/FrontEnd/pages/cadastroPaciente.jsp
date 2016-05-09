@@ -129,6 +129,9 @@
 							</ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+	                            <a href="cadastroPagamento.jsp"><i class="glyphicon glyphicon-usd"> </i> Efetuar Pagamento</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

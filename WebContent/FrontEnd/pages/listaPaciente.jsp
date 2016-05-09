@@ -104,7 +104,11 @@
                                     <a href="cadastroConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
-                            <!-- /.nav-second-level -->
+							
+							<!-- /.nav-second-level -->
+                        </li>
+                        <li>
+	                            <a href="cadastroPagamento.jsp"><i class="glyphicon glyphicon-usd"> </i> Efetuar Pagamento</a>
                         </li>
                     </ul>
                 </div>

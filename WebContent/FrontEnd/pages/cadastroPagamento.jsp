@@ -19,7 +19,7 @@
 		
 		ArrayList<Consulta> consultaList = new ArrayList<>();
 	    ConsultaDAO consultaDAO = new ConsultaDAO();
-	    consultaList = consultaDAO.getConsultasList();
+	    consultaList = consultaDAO.getConsultaNaoPaga();
 	    
 		PacienteDAO pacienteDAO = new PacienteDAO();
 
@@ -27,18 +27,9 @@
 
 	<script type="text/javascript" language="javascript">
 			function valida_form(){
-				nome = document.forms["formCadastro"]["nome"].value;
-				cpf = document.forms["formCadastro"]["cpf"].value;
-				dataNascimento = document.forms["formCadastro"]["dataNascimento"].value;
-				telefone = document.forms["formCadastro"]["telefone"].value;
-				email = document.forms["formCadastro"]["email"].value;
+				valor = document.forms["formCadastro"]["valor"].value;
 				
-				logradouro = document.forms["formCadastro"]["logradouro"].value;
-				bairro = document.forms["formCadastro"]["bairro"].value;
-				complemento = document.forms["formCadastro"]["complemento"].value;
-				numero = document.forms["formCadastro"]["numero"].value;
-	
-				if(nome == "" || cpf =="" || dataNascimento=="" || telefone=="" || email=="" ||  logradouro=="" || bairro=="" || numero==""){
+				if(valor == ""){
 					alert("Por favor, preencha todos os campos obrigatários");
 					return false
 				}else{
@@ -174,10 +165,10 @@
 									<div class = "form-group">
 										<div class="col-lg-6">	
 										<label>Consulta</label>
-											<select name="consulta" id="consulta" class="form-control">
+											<select name="idConsulta" id="idConsulta" class="form-control">
 												<% for(int i=0; i < consultaList.size();i++){ System.out.println(i);%>
 													<option value="<%=consultaList.get(i).getIdConsulta()%>"><%=consultaList.get(i).getDataConsulta()%>, <%=consultaList.get(i).getHorarioConsulta()%>, <%= pacienteDAO.getPaciente(consultaList.get(i).getIdPaciente()).getNome() %> </option>
-												<%} %>								
+												<%} %>							
 											</select>
 										</div>
 									<div class="col-lg-6">	
@@ -188,7 +179,7 @@
 										
 										<div class = "form-group">
 										<label>Tipo</label>
-											<select name="sexo" id="sexo" class="form-control">
+											<select name="tipoPagamento" id="tipoPagamento" class="form-control">
 												<option value="1">Dinheiro</option>
 												<option value="2">Cartão de Crédito</option>
 												<option value="3">Cartão de Débito</option>												
