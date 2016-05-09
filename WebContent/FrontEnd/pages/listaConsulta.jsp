@@ -1,3 +1,7 @@
+<%@page import="DAO.PacienteDAO"%>
+<%@page import="DAO.ConsultaDAO"%>
+<%@page import="model.Consulta"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,7 +9,20 @@
 <html lang="en">
 
 <head>
-
+<%      
+	String perfil = (String) session.getAttribute("perfilUsuario");
+	
+	
+	if(perfil != "1"){
+	  response.sendRedirect("login.html?erro=2");
+	}
+	
+	ArrayList<Consulta> consultaList = new ArrayList<>();
+    ConsultaDAO consultaDAO = new ConsultaDAO();
+    consultaList = consultaDAO.getConsultasList();
+    PacienteDAO pacienteDAO = new PacienteDAO();
+    
+%>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,55 +131,62 @@
 				<h2>Consultas</h2>
 					<div class="agenda">
 						<div class="table-responsive" style="margin-right: 2%">
+							<%if(consultaList.size() == 0) {%><h3>Você ainda não atendeu consultas. :(</h3>
+							<%}else{ %>
 							<table class="table table-condensed table-bordered">
 								<thead>
 									<tr>
 										<th>Data</th>
 										<th>Hora</th>
 										<th>Paciente</th>
-										<th>Médico</th>
 										<th>Queixa</th>
+										<th>Alterar</th>
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Single event in a single day -->
+									<%String[] dmy; %>
+									<% for(int i=0; i < consultaList.size();i++){%>
 									<tr>
 										<td class="agenda-date" class="active" rowspan="1">
-											<div class="dayofmonth">14</div>
-											<div class="dayofweek">Sexta-Feira</div>
-											<div class="shortdate text-muted">Abril, 2016</div>
+											<%  dmy = consultaList.get(i).getDataConsulta().toString().split("-"); %>
+											<div class="dayofmonth"><%= dmy[2] %></div>
+											<div class="dayofweek">
+												<%switch(dmy[1]){
+												case "01": %>Janeiro<% break;
+												case "02": %>Fevereiro<% break;
+												case "03": %>Março<% break;
+												case "04": %>Abril<% break;
+												case "05": %>Maio<% break;
+												case "06": %>Junho<% break;
+												case "07": %>Julho<% break;
+												case "08": %>Agosto<% break;
+												case "09": %>Setembro<% break;
+												case "10": %>Outubro<% break;
+												case "11": %>Novembro<% break;
+												case "12": %>Dezembro<% break;
+												} %>
+											</div>
+											<div class="shortdate text-muted"><%= dmy[0] %></div>
 										</td>
 										<td>
-											14:00h
+											<%= consultaList.get(i).getHorarioConsulta().toString().substring(0, 5) %>
+										</td>
+										<td>
+											<%= pacienteDAO.getPaciente(consultaList.get(i).getIdPaciente()).getNome() %>
 										</td>
 										<td>
 											<div>
-												João da Silva
+												<%= consultaList.get(i).getMotivo() %>
 											</div>
-										</td>
-										<td>
-											<div>
-												Dr. Railan Cheetos
-											</div>
-										</td>
-										<td>
-											<div>
-												Dor de Barriga
-											</div>
-										</td>										
+										</td>					
+										<td><a href="cadastroConsulta.jsp?action=Alterar&idConsulta=<%=consultaList.get(i).getIdConsulta()%>"><center><img src="img/alterarSmall.png"></center></a></td>										
+																			
 									</tr>
-									
-									<tr>
-										<td class="agenda-date" class="active" rowspan="3">
-											<div class="dayofmonth">18</div>
-											<div class="dayofweek">Segunda-Feira</div>
-											<div class="shortdate text-muted">Abril, 2016</div>
-										</td>
-
-									
+									<%} %>
 								</tbody>
-
+			
 							</table>
+						<%}%>
 						</div>
 					</div>
 				</div>

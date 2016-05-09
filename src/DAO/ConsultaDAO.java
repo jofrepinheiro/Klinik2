@@ -16,7 +16,7 @@ public class ConsultaDAO {
 		ArrayList<Consulta> consultasList = new ArrayList<>();
 		Connection con = new Conexao().getConnection();		
 		
-		String sql = "SELECT * FROM CONSULTA";
+		String sql = "SELECT * FROM CONSULTA WHERE atendida != 1";
 		PreparedStatement statement = con.prepareStatement(sql);
 		ResultSet rs = statement.executeQuery();
 		
@@ -157,6 +157,5 @@ public class ConsultaDAO {
 		statement.close();
 		con.close();
 		return consultasList;
-	}
-	
+	}	
 }
