@@ -151,4 +151,21 @@ public class ConsultaDAO {
 		con.close();
 		return consultasList;
 	}	
+	
+	public void setAtendida(int idConsulta) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		String sql = "UPDATE CONSULTA SET "
+				+ " atendida = 1 "
+				+ "WHERE idConsulta = ?";
+		
+		PreparedStatement statement = con.prepareStatement(sql);
+		
+		statement.setInt(1,idConsulta);
+		statement.executeUpdate();
+		
+		statement.close();
+		con.close();
+	}
 }

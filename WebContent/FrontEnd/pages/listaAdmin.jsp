@@ -135,10 +135,10 @@
                                     <a href="listaAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="listaMedico.jsp">Médico</a>
+                                    <a href="listaMedico.jsp">Medico</a>
                                 </li>
 								<li>
-                                    <a href="listaSec.jsp">Secretário</a>
+                                    <a href="listaSec.jsp">Secretario</a>
                                 </li>	
 							</ul>
                         </li>
@@ -149,10 +149,10 @@
                                     <a href="cadastroAdmin.jsp">Administrador</a>
                                 </li>
                                 <li>
-                                    <a href="cadastroMedico.jsp">Médico</a>
+                                    <a href="cadastroMedico.jsp">Medico</a>
                                 </li>
 								<li>
-                                    <a href="cadastroSec.jsp">Secretário</a>
+                                    <a href="cadastroSec.jsp">Secretario</a>
                                 </li>	
 							</ul>
                             <!-- /.nav-second-level -->

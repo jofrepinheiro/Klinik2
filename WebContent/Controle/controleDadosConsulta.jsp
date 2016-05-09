@@ -1,3 +1,4 @@
+<%@page import="DAO.ConsultaDAO"%>
 <%@page import="model.DadosConsulta"%>
 <%@page import="DAO.DadosConsultaDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -37,6 +38,9 @@
 		dadosConsulta.setIdConsulta(Integer.parseInt(idConsulta));
 		
 		dadosConsultaDAO.cadastrarDadosConsulta(dadosConsulta);
+		ConsultaDAO consultaDAO = new ConsultaDAO();
+		consultaDAO.setAtendida(dadosConsulta.getIdConsulta());
+		response.sendRedirect("../FrontEnd/pages/listaConsultaDia.jsp?sucesso=1");
 	%>
 </body>
 </html>
