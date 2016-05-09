@@ -33,9 +33,6 @@ int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 	String complemento;
 	String cep;
 if (action.equalsIgnoreCase("Cadastrar")){
-	
-  // usuario e senha corretos
- 
 
   // dados informados no formulário
   login = request.getParameter("login");
@@ -48,7 +45,6 @@ if (action.equalsIgnoreCase("Cadastrar")){
   dataNascimento = request.getParameter("dataNascimento");
   especialidade = request.getParameter("especialidade");
   especialidade2 = request.getParameter("especialidade2");
-  
   
   bairro = request.getParameter("bairro");
   logradouro = request.getParameter("logradouro");
@@ -80,7 +76,6 @@ if (action.equalsIgnoreCase("Cadastrar")){
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
   if(cpfValido == false){
 	  response.sendRedirect("../FrontEnd/pages/cadastroMedico.jsp?erro=1");
-	  System.out.println("Aqui 1");
   }else{
   
 	  endereco.setBairro(bairro);
@@ -94,7 +89,8 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=1");
   }
 }else{
-	login = request.getParameter("login");
+	if(action.equalsIgnoreCase("Alterar")){
+	  login = request.getParameter("login");
 	  senha = request.getParameter("senha");
 	  nome = request.getParameter("nome");
 	  telefone = request.getParameter("telefone");
@@ -143,6 +139,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
 		  enderecoDAO.cadastrarEndereco(endereco);
 		  medicoDAO.alterarMedico(medico);
 		  response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=2");
+	}else{
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO.inativarUsuario(idUsuario);
+		response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=3");
+	}
 }
 
 %>

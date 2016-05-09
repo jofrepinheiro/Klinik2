@@ -84,7 +84,8 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=1");
   }
 }else{
-	login = request.getParameter("login");
+  if(action.equalsIgnoreCase("Alterar")){
+	  login = request.getParameter("login");
 	  senha = request.getParameter("senha");
 	  nome = request.getParameter("nome");
 	  telefone = request.getParameter("telefone");
@@ -128,7 +129,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
 		  //enderecoDAO.cadastrarEndereco(endereco);
 		  secretarioDAO.alterarSecretario(secretario);
 		  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=2");
-	  
+  }else{
+	  UsuarioDAO usuarioDAO = new UsuarioDAO();
+	  usuarioDAO.inativarUsuario(idUsuario);
+	  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=3");
+  }
 }
 //}
 %>

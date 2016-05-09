@@ -14,6 +14,10 @@
 	if(getVar("sucesso") == 2){
 		alert("Atualizacao realizada com Sucesso!")
 	}
+	if(getVar("sucesso") == 3){
+		alert("Administrador excluido com Sucesso!")
+	}
+	
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
@@ -186,6 +190,7 @@
 											<th>Telefone</th>
                                             <th>Email</th>
                                             <th>Alterar</th>
+                                            <th>Excluir</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -197,7 +202,9 @@
 											<td><%=admList.get(i).getDataNascimento()%></td>
 											<td><%=admList.get(i).getTelefone()%></td>
 											<td><%=admList.get(i).getEmail()%></td>
-											<td><a href="cadastroAdmin.jsp?action=Alterar&idUsuario=<%=admList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a> </td>											
+											<td><a href="cadastroAdmin.jsp?action=Alterar&idUsuario=<%=admList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a> </td>	
+											<td><a href="../../Controle/controleAdministrador.jsp?action=Excluir&idUsuario=<%=admList.get(i).getIdUsuario()%>"><center><img src="img/excluir.jpg"></center></a> </td>	
+							
                                         </tr>
                                     <%} %>
                                     </tbody>

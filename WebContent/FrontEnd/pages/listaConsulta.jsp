@@ -14,6 +14,9 @@
 	if(getVar("sucesso") == 2){
 		alert("Atualizacao realizada com Sucesso!")
 	}
+	if(getVar("sucesso") == 3){
+		alert("Consulta excluida com Sucesso!")
+	}
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
@@ -187,6 +190,7 @@
 										<th>Paciente</th>
 										<th>Queixa</th>
 										<th>Alterar</th>
+										<th>Excluir</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -226,6 +230,7 @@
 											</div>
 										</td>					
 										<td><a href="cadastroConsulta.jsp?action=Alterar&idConsulta=<%=consultaList.get(i).getIdConsulta()%>"><center><img src="img/alterarSmall.png"></center></a></td>										
+										<td><a href="../../Controle/controleConsulta.jsp?action=Deletar&idConsulta=<%=consultaList.get(i).getIdConsulta()%>"><center><img src="img/excluir.jpg"></center></a></td>										
 																			
 									</tr>
 									<%} %>

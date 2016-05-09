@@ -14,6 +14,9 @@
 	if(getVar("sucesso") == 2){
 		alert("Atualizacao realizada com Sucesso!")
 	}
+	if(getVar("sucesso") == 3){
+		alert("Secretario excluido com Sucesso!")
+	}
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
@@ -195,6 +198,7 @@
                                             <th>Email</th>
                                             <th>Turno</th>
                                             <th>Alterar</th> 
+                                            <th>Excluir</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -214,7 +218,8 @@
 												case 3: %>Noite<% break;
 											}%>
 											</td>
-											<td><a href="cadastroSec.jsp?action=Alterar&idUsuario=<%=secretarioList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></a> </td>											
+											<td><a href="cadastroSec.jsp?action=Alterar&idUsuario=<%=secretarioList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></a> </td>		
+											<td><a href="../../Controle/controleSecretario.jsp?action=Deletar&idUsuario=<%=secretarioList.get(i).getIdUsuario()%>"><center><img src="img/excluir.jpg"></center></a></a> </td>																				
                                         </tr>
                                     <%} %>
                                     </tbody>

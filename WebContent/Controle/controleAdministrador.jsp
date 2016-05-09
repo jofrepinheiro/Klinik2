@@ -79,6 +79,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  response.sendRedirect("../FrontEnd/pages/listaAdmin.jsp?sucesso=1");
   }
 }else{
+	if(action.equalsIgnoreCase("Alterar")){
 	  login = request.getParameter("login");
 	  senha = request.getParameter("senha");
 	  nome = request.getParameter("nome");
@@ -121,7 +122,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
 		  administrador.setIdAdministrador(idUsuario);
 		  administradorDAO.alterarAdministrador(administrador);
 		  response.sendRedirect("../FrontEnd/pages/listaAdmin.jsp?sucesso=2");
-	  //}
+	 }else{
+		 UsuarioDAO usuarioDAO = new UsuarioDAO();
+		 usuarioDAO.inativarUsuario(idUsuario);
+		 response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=3");
+	 }
 }
  %>
 </body>

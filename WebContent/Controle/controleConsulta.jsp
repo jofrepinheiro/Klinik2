@@ -53,6 +53,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
   consultaDAO.cadastrarConsulta(consulta);
   response.sendRedirect("../FrontEnd/pages/indexSec.jsp?sucesso=1");
 }else{
+	if(action.equalsIgnoreCase("Alterar")){
 	// dados informados no formulário
 	  paciente = request.getParameter("paciente");
 	  medico = request.getParameter("medico");
@@ -81,6 +82,11 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  
 	  consultaDAO.alterarConsulta(consulta);
 	  response.sendRedirect("../FrontEnd/pages/listaConsulta.jsp?sucesso=2");
+	}else{
+		  ConsultaDAO consultaDAO = new ConsultaDAO();
+		  consultaDAO.deletarConsulta(idConsulta);
+		  response.sendRedirect("../FrontEnd/pages/listaConsulta.jsp?sucesso=3");
+	}
 }
 %>
 </body>

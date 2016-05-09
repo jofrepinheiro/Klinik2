@@ -205,4 +205,17 @@ public class ConsultaDAO {
 		statement.close();
 		con.close();
 	}
+	
+	public void deletarConsulta(int idConsulta) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		
+		String sql = "Delete from Consulta where idconsulta=?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idConsulta);
+
+		statement.executeUpdate();
+		
+		statement.close();
+		con.close();
+	}
 }
