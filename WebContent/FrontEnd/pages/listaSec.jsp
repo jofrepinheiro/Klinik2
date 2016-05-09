@@ -11,6 +11,9 @@
 	if(getVar("sucesso") == 1){
 		alert("Cadastro realizado com Sucesso!")
 	}
+	if(getVar("sucesso") == 2){
+		alert("Atualizacao realizada com Sucesso!")
+	}
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){

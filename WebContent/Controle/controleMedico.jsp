@@ -15,26 +15,27 @@
 <body>
 <%
 String action = request.getParameter("action"); 
+int idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
 
-
+	String login;
+	String senha;
+	String dataNascimento;
+	String nome;
+	String cpf;
+	String telefone;
+	String crm;
+	String email;
+	String especialidade;
+	String especialidade2;
+	String bairro;
+	String logradouro;
+	String numero;
+	String complemento;
+	String cep;
 if (action.equalsIgnoreCase("Cadastrar")){
 	
   // usuario e senha corretos
-  String login;
-  String senha;
-  String dataNascimento;
-  String nome;
-  String cpf;
-  String telefone;
-  String crm;
-  String email;
-  String especialidade;
-  String especialidade2;
-  String bairro;
-  String logradouro;
-  String numero;
-  String complemento;
-  String cep;
+ 
 
   // dados informados no formulário
   login = request.getParameter("login");
@@ -92,9 +93,58 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  medicoDAO.cadastrarMedico(medico);
 	  response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=1");
   }
-
+}else{
+	login = request.getParameter("login");
+	  senha = request.getParameter("senha");
+	  nome = request.getParameter("nome");
+	  telefone = request.getParameter("telefone");
+	  cpf = request.getParameter("cpf");
+	  crm = request.getParameter("crm");
+	  email = request.getParameter("email");
+	  dataNascimento = request.getParameter("dataNascimento");
+	  especialidade = request.getParameter("especialidade");
+	  especialidade2 = request.getParameter("especialidade2");
+	  
+	  bairro = request.getParameter("bairro");
+	  logradouro = request.getParameter("logradouro");
+	  numero = request.getParameter("numero");
+	  complemento = request.getParameter("complemento");
+	  cep = request.getParameter("cep");
+	  
+	  Endereco endereco = new Endereco();
+	  Medico medico = new Medico();
+	  EnderecoDAO enderecoDAO = new EnderecoDAO();
+	  MedicoDAO medicoDAO = new MedicoDAO();
+	  
+	  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
+	  
+	  medico.setIdUsuario(idUsuario);
+	  medico.setLogin(login);
+	  medico.setSenha(senha);
+	  medico.setDataNascimento(data);
+	  medico.setNome(nome);
+	  medico.setAtivo(1);
+	  medico.setEmail(email);
+	  medico.setTelefone(telefone);
+	  medico.setCpf(cpf);
+	  medico.setCRM(Integer.parseInt(crm));
+	  medico.setEspecialidade(especialidade);
+	  medico.setEspecialidade2(especialidade2);
+	  
+	  UsuarioDAO usuarioDAO = new UsuarioDAO();
+	  
+		  endereco.setBairro(bairro);
+		  endereco.setComplemento(complemento);
+		  endereco.setCEP(cep);
+		  endereco.setLogradouro(logradouro);
+		  endereco.setNumero(Integer.parseInt(numero));
+		   
+		  enderecoDAO.cadastrarEndereco(endereco);
+		  medicoDAO.alterarMedico(medico);
+		  response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=2");
 }
-//}
+
 %>
 
 

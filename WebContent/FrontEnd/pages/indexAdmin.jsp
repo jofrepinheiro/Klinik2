@@ -100,7 +100,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroAdmin.jsp">Administrador</a>
+                                    <a href="cadastroAdmin.jsp?action=Cadastrar">Administrador</a>
                                 </li>
                                 <li>
                                     <a href="cadastroMedico.jsp">Médico</a>

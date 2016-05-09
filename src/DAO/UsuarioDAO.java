@@ -171,17 +171,15 @@ public class UsuarioDAO {
 	
 	public void alterarUsuario(Usuario usuario) throws SQLException{
 		Connection con = new Conexao().getConnection();
-		
-		String sql = "UPDATE USUARIO SET "
-				+ " login = ?"
-				+ " senha = ?"
-				+ " dataNasc = ?"
-				+ " nome = ?"
-				+ " telefone = ?"
-				+ " email = ?"
-				+ " idEndereco = ?"
+		String sql = "UPDATE USUARIO SET"
+				+ " login = ? ,"
+				+ " senha = ? ,"
+				+ " dataNasc = ? ,"
+				+ " nome = ? ,"
+				+ " telefone = ? ,"
+				+ " email = ? ,"
 				+ " cpf = ?"
-				+ " where idUsuario=?";
+				+ " WHERE idUsuario=?";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, usuario.getLogin());
@@ -190,9 +188,8 @@ public class UsuarioDAO {
 		statement.setString(4,  usuario.getNome());
 		statement.setString(5,  usuario.getTelefone());
 		statement.setString(6,  usuario.getEmail());
-		statement.setInt(7, usuario.getIdEndereco());
-		statement.setString(8, usuario.getCpf());
-		statement.setInt(9, usuario.getIdUsuario());
+		statement.setString(7, usuario.getCpf());
+		statement.setInt(8, usuario.getIdUsuario());
 
 		statement.executeUpdate();
 		

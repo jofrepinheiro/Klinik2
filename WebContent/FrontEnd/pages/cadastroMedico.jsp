@@ -55,6 +55,9 @@
 </script>
 
 <%	  
+		String action = request.getParameter("action"); 
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
+		
 		String perfil = (String) session.getAttribute("perfilUsuario");
 		if(perfil != "0"){
 			  response.sendRedirect("login.html?erro=2");
@@ -207,8 +210,7 @@
 							Cadastrar Médico
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro" id="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleMedico.jsp">
-								<input type="hidden" name="action" value="Cadastrar">
+                            <form method="post" role="form" name="formCadastro" id="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleMedico.jsp?action=<%=action%>&idUsuario=<%=idUsuario%>">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">

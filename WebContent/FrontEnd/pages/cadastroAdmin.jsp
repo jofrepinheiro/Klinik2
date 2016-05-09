@@ -59,6 +59,9 @@
 </script>
 
 	<%	  
+		String action = request.getParameter("action"); 
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
+
 		String perfil = (String) session.getAttribute("perfilUsuario");
 		if(perfil != "0"){
 			  response.sendRedirect("login.html?erro=2");
@@ -77,7 +80,7 @@
 			bairro = document.forms["formCadastro"]["bairro"].value;
 			complemento = document.forms["formCadastro"]["complemento"].value;
 			numero = document.forms["formCadastro"]["numero"].value;
-
+			
 			if(nome == "" || senha == "" || cpf =="" || telefone=="" || dataNascimento=="" || logradouro=="" || bairro=="" || numero==""){
 				alert("Por favor, preencha todos os campos obrigatórios");
 				return false
@@ -202,8 +205,7 @@
 							<h4>Cadastrar Administrador</h4>
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleAdministrador.jsp">
-								<input type="hidden" name="action" value="Cadastrar">
+                            <form method="post" role="form" name="formCadastro" action="../../Controle/controleAdministrador.jsp?action=<%=action%>&idUsuario=<%=idUsuario%>">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">

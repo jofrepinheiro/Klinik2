@@ -12,6 +12,9 @@
 	if(getVar("sucesso") == 1){
 		alert("Cadastro realizado com Sucesso!")
 	}
+	if(getVar("sucesso") == 2){
+		alert("Atualizacao realizada com Sucesso!")
+	}
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
@@ -204,7 +207,7 @@
 											<td><%=medicoList.get(i).getTelefone()%></td>
 											<td><%=medicoList.get(i).getEmail()%></td>
 											<td><%=medicoList.get(i).getEspecialidade()%> <%if(!medicoList.get(i).getEspecialidade2().equalsIgnoreCase("0")){%>, <%=medicoList.get(i).getEspecialidade2()%><%} %></td>	
-											<td><a href="cadastroMedico.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>										
+											<td><a href="cadastroMedico.jsp?action=Alterar&idUsuario=<%=medicoList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></td>										
                                         </tr>
                                     <%} %>
                                     </tbody>

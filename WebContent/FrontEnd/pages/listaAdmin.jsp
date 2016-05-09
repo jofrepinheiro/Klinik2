@@ -11,6 +11,9 @@
 	if(getVar("sucesso") == 1){
 		alert("Cadastro realizado com Sucesso!")
 	}
+	if(getVar("sucesso") == 2){
+		alert("Atualizacao realizada com Sucesso!")
+	}
 	
 	function urlDecode(string, overwrite){
 		if(!string || !string.length){
@@ -194,7 +197,7 @@
 											<td><%=admList.get(i).getDataNascimento()%></td>
 											<td><%=admList.get(i).getTelefone()%></td>
 											<td><%=admList.get(i).getEmail()%></td>
-											<td><a href="cadastroAdmin.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>											
+											<td><a href="cadastroAdmin.jsp?action=Alterar&idUsuario=<%=admList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a> </td>											
                                         </tr>
                                     <%} %>
                                     </tbody>
