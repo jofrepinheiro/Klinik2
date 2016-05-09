@@ -125,7 +125,7 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	 }else{
 		 UsuarioDAO usuarioDAO = new UsuarioDAO();
 		 usuarioDAO.inativarUsuario(idUsuario);
-		 response.sendRedirect("../FrontEnd/pages/listaMedico.jsp?sucesso=3");
+		 response.sendRedirect("../FrontEnd/pages/listaAdmin.jsp?sucesso=3");
 	 }
 }
  %>
