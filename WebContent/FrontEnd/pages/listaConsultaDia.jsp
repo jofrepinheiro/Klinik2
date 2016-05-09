@@ -139,7 +139,7 @@
 											</td>
 											<td><%= pacienteDAO.getPaciente(consultaDiaList.get(i).getIdPaciente()).getNome() %></td>
 											<td><%=consultaDiaList.get(i).getMotivo() %></td>
-											<td><a href="cadastroMedico.jsp?action=alterar"><center><img src="img/atender.png"></center></a> </td>
+											<td><a href="cadastroDadosConsulta.jsp?idMedico=<%=consultaDiaList.get(i).getIdMedico()%>&idConsulta=<%=consultaDiaList.get(i).getIdConsulta()%>"><center><img src="img/atender.png"></center></a></td>
 										</tr>
 										<%} %>
 									</tbody>

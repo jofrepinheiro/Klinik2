@@ -48,11 +48,6 @@ if (action.equalsIgnoreCase("Cadastrar")){
   cep = request.getParameter("cep");
   
   
-  
-  System.out.println(nome + cpf + sexo + dataNascimento);
-
-  System.out.println(bairro + logradouro);
-  
   Endereco endereco = new Endereco();
   Paciente paciente = new Paciente();
 
