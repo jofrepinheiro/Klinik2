@@ -125,8 +125,8 @@ if (action.equalsIgnoreCase("Cadastrar")){
 		  endereco.setLogradouro(logradouro);
 		  endereco.setNumero(Integer.parseInt(numero));
 		  
-		  enderecoDAO.cadastrarEndereco(endereco);
-		  secretarioDAO.cadastrarSecretario(secretario);
+		  //enderecoDAO.cadastrarEndereco(endereco);
+		  secretarioDAO.alterarSecretario(secretario);
 		  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=2");
 	  
 }

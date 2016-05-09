@@ -207,7 +207,7 @@
 											<td><%=medicoList.get(i).getTelefone()%></td>
 											<td><%=medicoList.get(i).getEmail()%></td>
 											<td><%=medicoList.get(i).getEspecialidade()%> <%if(!medicoList.get(i).getEspecialidade2().equalsIgnoreCase("0")){%>, <%=medicoList.get(i).getEspecialidade2()%><%} %></td>	
-											<td><a href="cadastroMedico.jsp?idUsuario=<%=medicoList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></td>										
+											<td><a href="cadastroMedico.jsp?action=Alterar&idUsuario=<%=medicoList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></td>										
                                         </tr>
                                     <%} %>
                                     </tbody>

@@ -3,7 +3,7 @@ package model;
 public class Pagamento {
 	private int idPagamento;
 	private float valorPagamento;
-	private char tipoPagamento;
+	private int tipoPagamento;
 	
 	public int getIdPagamento() {
 		return idPagamento;
@@ -17,10 +17,10 @@ public class Pagamento {
 	public void setValorPagamento(float valorPagamento) {
 		this.valorPagamento = valorPagamento;
 	}
-	public char getTipoPagamento() {
+	public int getTipoPagamento() {
 		return tipoPagamento;
 	}
-	public void setTipoPagamento(char tipoPagamento) {
+	public void setTipoPagamento(int tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}	
 }
