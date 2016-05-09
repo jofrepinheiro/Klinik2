@@ -40,17 +40,17 @@ if (action.equalsIgnoreCase("Cadastrar")){
   email = request.getParameter("email");
   dataNascimento = request.getParameter("dataNascimento");
   
+  bairro = request.getParameter("bairro");
+  logradouro = request.getParameter("logradouro");
+  numero = request.getParameter("numero");
+  complemento = request.getParameter("complemento");
+  cep = request.getParameter("cep");
+  
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
   if(cpfValido == false){
 	  response.sendRedirect("../FrontEnd/pages/cadastroAdmin.jsp?erro=1");
   }else{
-  
-	  bairro = request.getParameter("bairro");
-	  logradouro = request.getParameter("logradouro");
-	  numero = request.getParameter("numero");
-	  complemento = request.getParameter("complemento");
-	  cep = request.getParameter("cep");
 	  
 	  Endereco endereco = new Endereco();
 	  Administrador administrador  = new Administrador();

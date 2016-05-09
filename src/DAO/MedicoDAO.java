@@ -165,6 +165,16 @@ public class MedicoDAO {
 	
 	public void alterarMedico(Medico medico) throws SQLException{
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Connection con = new Conexao().getConnection();
+		String sql = "UPDATE MEDICO set especialidade=?, especialidade2=? WHERE idUsuario=?";
+		
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, medico.getEspecialidade());
+		statement.setString(2,  medico.getEspecialidade2());
+		statement.setInt(3, medico.getIdUsuario());
+		statement.executeUpdate();
+		statement.close();
+		con.close();
 		usuarioDAO.alterarUsuario(medico);;		
 	}
 }

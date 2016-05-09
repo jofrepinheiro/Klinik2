@@ -57,6 +57,8 @@
 		}
 </script>
 <%	  
+		String action = request.getParameter("action"); 
+		int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 		String perfil = (String) session.getAttribute("perfilUsuario");
 		if(perfil != "0"){
 			  response.sendRedirect("login.html?erro=2");
@@ -207,8 +209,7 @@
 							Cadastrar Secretário
                         </div>
                         <div class="panel-body">
-                            <form method="post" id="formCadastro" role="form" name="formCadastro" action="../../Controle/controleSecretario.jsp">
-                            	<input type="hidden" name="action" value="Cadastrar">
+                            <form method="post" id="formCadastro" role="form" name="formCadastro" action="../../Controle/controleSecretario.jsp?action=<%=action%>&idUsuario=<%=idUsuario%>">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">

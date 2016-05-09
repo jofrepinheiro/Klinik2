@@ -214,7 +214,7 @@
 												case 3: %>Noite<% break;
 											}%>
 											</td>
-											<td><a href="cadastroSec.jsp?action=alterar"><img src="img/alterarSmall.png"></a> </td>											
+											<td><a href="cadastroSec.jsp?action=Alterar&idUsuario=<%=secretarioList.get(i).getIdUsuario()%>"><center><img src="img/alterarSmall.png"></center></a></a> </td>											
                                         </tr>
                                     <%} %>
                                     </tbody>

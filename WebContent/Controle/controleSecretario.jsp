@@ -17,25 +17,22 @@
 <body>
 <%
 String action = request.getParameter("action"); 
+int idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
 
-System.out.println("Acao: " + action);
-
-if (action.equalsIgnoreCase("Cadastrar")){
-	
-  // usuario e senha corretos
-  String login;
-  String senha;
-  String dataNascimento;
-  String nome;
-  String cpf;
-  String telefone;
-  String email;
-  String turno;
-  String bairro;
-  String logradouro;
-  String numero;
-  String complemento;
-  String cep;
+	String login;
+	String senha;
+	String dataNascimento;
+	String nome;
+	String cpf;
+	String telefone;
+	String email;
+	String turno;
+	String bairro;
+	String logradouro;
+	String numero;
+	String complemento;
+	String cep;
+if (action.equalsIgnoreCase("Cadastrar")){ 
 
   // dados informados no formulário
   login = request.getParameter("login");
@@ -52,31 +49,30 @@ if (action.equalsIgnoreCase("Cadastrar")){
   numero = request.getParameter("numero");
   complemento = request.getParameter("complemento");
   cep = request.getParameter("cep");
-  
-  Endereco endereco = new Endereco();
-  Secretario secretario = new Secretario();
-  EnderecoDAO enderecoDAO = new EnderecoDAO();
-  SecretarioDAO secretarioDAO = new SecretarioDAO();
-  
-  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
-  
-  secretario.setLogin(login);
-  secretario.setSenha(senha);
-  secretario.setDataNascimento(data);
-  secretario.setNome(nome);
-  secretario.setAtivo(1);
-  secretario.setEmail(email);
-  secretario.setTelefone(telefone);
-  secretario.setCpf(cpf);
-  secretario.setTurno(Integer.parseInt(turno));
-  
+    
   UsuarioDAO usuarioDAO = new UsuarioDAO();
   boolean cpfValido = usuarioDAO.validarCpf(cpf);
   if(cpfValido == false){
 	  response.sendRedirect("../FrontEnd/pages/cadastroSec.jsp?erro=1");
   }else{
-  
+	  Endereco endereco = new Endereco();
+	  Secretario secretario = new Secretario();
+	  EnderecoDAO enderecoDAO = new EnderecoDAO();
+	  SecretarioDAO secretarioDAO = new SecretarioDAO();
+	  
+	  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
+
+	  secretario.setLogin(login);
+	  secretario.setSenha(senha);
+	  secretario.setDataNascimento(data);
+	  secretario.setNome(nome);
+	  secretario.setAtivo(1);
+	  secretario.setEmail(email);
+	  secretario.setTelefone(telefone);
+	  secretario.setCpf(cpf);
+	  secretario.setTurno(Integer.parseInt(turno));
+	  
 	  endereco.setBairro(bairro);
 	  endereco.setComplemento(complemento);
 	  endereco.setCEP(cep);
@@ -87,7 +83,52 @@ if (action.equalsIgnoreCase("Cadastrar")){
 	  secretarioDAO.cadastrarSecretario(secretario);
 	  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=1");
   }
+}else{
+	login = request.getParameter("login");
+	  senha = request.getParameter("senha");
+	  nome = request.getParameter("nome");
+	  telefone = request.getParameter("telefone");
+	  cpf = request.getParameter("cpf");
+	  email = request.getParameter("email");
+	  dataNascimento = request.getParameter("dataNascimento");
+	  turno = request.getParameter("turno");
+	  
+	  bairro = request.getParameter("bairro");
+	  logradouro = request.getParameter("logradouro");
+	  numero = request.getParameter("numero");
+	  complemento = request.getParameter("complemento");
+	  cep = request.getParameter("cep");
+	    
+	  UsuarioDAO usuarioDAO = new UsuarioDAO();	  
+		  Endereco endereco = new Endereco();
+		  Secretario secretario = new Secretario();
+		  EnderecoDAO enderecoDAO = new EnderecoDAO();
+		  SecretarioDAO secretarioDAO = new SecretarioDAO();
+		  
+		  SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		  java.sql.Date data = new java.sql.Date(format.parse(dataNascimento).getTime());
 
+		  secretario.setIdUsuario(idUsuario);
+		  secretario.setLogin(login);
+		  secretario.setSenha(senha);
+		  secretario.setDataNascimento(data);
+		  secretario.setNome(nome);
+		  secretario.setAtivo(1);
+		  secretario.setEmail(email);
+		  secretario.setTelefone(telefone);
+		  secretario.setCpf(cpf);
+		  secretario.setTurno(Integer.parseInt(turno));
+		  
+		  endereco.setBairro(bairro);
+		  endereco.setComplemento(complemento);
+		  endereco.setCEP(cep);
+		  endereco.setLogradouro(logradouro);
+		  endereco.setNumero(Integer.parseInt(numero));
+		  
+		  enderecoDAO.cadastrarEndereco(endereco);
+		  secretarioDAO.cadastrarSecretario(secretario);
+		  response.sendRedirect("../FrontEnd/pages/listaSec.jsp?sucesso=2");
+	  
 }
 //}
 %>

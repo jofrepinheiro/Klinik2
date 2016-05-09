@@ -130,6 +130,15 @@ public class SecretarioDAO {
 	
 	public void alterarSecretario(Secretario secretario) throws SQLException{
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Connection con = new Conexao().getConnection();
+		String sql = "UPDATE SECRETARIO set turno=? WHERE idUsuario=?";
+		
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, secretario.getTurno());
+		statement.setInt(2, secretario.getIdUsuario());
+		statement.executeUpdate();
+		statement.close();
+		con.close();
 		usuarioDAO.alterarUsuario(secretario);		
 	}
 }
