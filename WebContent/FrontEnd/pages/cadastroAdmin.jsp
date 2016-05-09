@@ -60,8 +60,12 @@
 
 	<%	  
 		String action = request.getParameter("action"); 
-		int idUsuario = Integer.parseInt(request.getParameter("idUsuario")); 
-
+		String usuario = request.getParameter("idUsuario"); 
+		int idUsuario = 0;
+		if(usuario != null){
+			idUsuario = Integer.parseInt(usuario);
+		}
+		
 		String perfil = (String) session.getAttribute("perfilUsuario");
 		if(perfil != "0"){
 			  response.sendRedirect("login.html?erro=2");

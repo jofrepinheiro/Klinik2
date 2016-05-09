@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="model.Consulta"%>
+<%@page import="DAO.ConsultaDAO"%>
 <%@page import="DAO.MedicoDAO"%>
 <%@page import="DAO.PacienteDAO"%>
 <%@page import="model.Medico"%>
@@ -8,13 +11,48 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<script>
+	function desabilitarPacienteMedico(paciente, medico){
+		document.forms["formCadastro"]["paciente"].value = paciente;
+		document.forms["formCadastro"]["medico"].value = medico;
+		document.forms["formCadastro"]["paciente"].disable = "disable";
+		document.forms["formCadastro"]["medico"].disable = "disable";
 
+
+	}
+</script>
 <head>
 <%	  
-		String perfil = (String) session.getAttribute("perfilUsuario");
-		if(perfil != "1"){
+	String action = request.getParameter("action");
+	String data="";
+	String horario="";
+	int idConsulta = Integer.parseInt(request.getParameter("idConsulta")); 
+
+	String perfil = (String) session.getAttribute("perfilUsuario");
+	if(perfil != "1"){
 			  response.sendRedirect("login.html?erro=2");
-		}
+	}
+	
+	Consulta consulta = new Consulta();
+	if(action.equalsIgnoreCase("Alterar")){
+		ConsultaDAO consultaDAO = new ConsultaDAO();
+		consulta = consultaDAO.getConsulta(idConsulta);
+		Paciente paciente = new Paciente();
+		PacienteDAO pacienteDAO = new PacienteDAO();
+		paciente = pacienteDAO.getPaciente(consulta.getIdPaciente());
+		Medico medico = new Medico();
+		MedicoDAO medicoDAO = new MedicoDAO();
+		medico = medicoDAO.getMedico(consulta.getIdMedico());		
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		data = format.format(consulta.getDataConsulta());
+		format = new SimpleDateFormat("HH:mm");
+		horario = format.format(consulta.getHorarioConsulta());
+		
+		String pacienteString = paciente.getCpf()+ " - " +  paciente.getNome();
+		String medicoString = medico.getCpf() + " - " + medico.getNome();
+		System.out.println("Estamos Aqui" + pacienteString + medicoString);
+		out.println("<script>desabilitarPacienteMedico('"+pacienteString+"','"+medicoString+"');</script>");
+	}
 
 %>
 
@@ -68,7 +106,6 @@
     ArrayList<Paciente> pacienteList = new ArrayList<>();
     PacienteDAO pacienteDAO = new PacienteDAO();
     pacienteList = pacienteDAO.getPacienteList();
-    System.out.println(pacienteList.size());
 %>
     
 
@@ -132,10 +169,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"> </i> Cadastro<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="cadastroPaciente.html">Paciente</a>
+                                    <a href="cadastroPaciente.jsp">Paciente</a>
                                 </li>
                                 <li>
-                                    <a href="#">Consulta</a>
+                                    <a href="cadastroConsulta.jsp">Consulta</a>
                                 </li>
 							</ul>
                             <!-- /.nav-second-level -->
@@ -187,17 +224,17 @@
 										
 										<div class="form-group">
                                             <label>Data</label>
-                                            <input class="form-control" name="data" placeholder="DD/MM/AAAA">
+                                            <input class="form-control" name="data" placeholder="DD/MM/AAAA" value="<%=data%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Hora</label>
-                                            <input class="form-control" name="hora" placeholder="">
+                                            <input class="form-control" name="hora" placeholder="" value="<%=horario%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Queixa</label>
-                                            <textarea type="textarea" rows="5" class="form-control" name="motivo" placeholder=""></textarea>	
+                                            <textarea type="textarea" rows="5" class="form-control" name="motivo" placeholder="" value="<%=consulta.getMotivo()%>"></textarea>	
                                         </div>
 										
 									</div>

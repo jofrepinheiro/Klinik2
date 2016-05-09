@@ -84,23 +84,15 @@ public class ConsultaDAO {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
 		String sql = "UPDATE CONSULTA SET "
-				+ " dataConsulta = ?"
-				+ " horarioConsulta = ?"
-				+ " motivo = ?"
-				+ " idMedico = ?"
-				+ " idPaciente = ?"
-				+ " idPagamento = ?"
+				+ " dataConsulta = ? ,"
+				+ " horarioConsulta = ? ,"
+				+ " motivo = ? "
 				+ "WHERE idConsulta = ?";
 		
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setDate(1,consulta.getDataConsulta());
 		statement.setTime(2, consulta.getHorarioConsulta());
 		statement.setString(3, consulta.getMotivo());
-		statement.setInt(4, consulta.getIdMedico());
-		statement.setInt(5, consulta.getIdPaciente());
-		statement.setInt(6, consulta.getIdPagamento());
-		statement.setInt(7, consulta.getIdConsulta());
-	
 		statement.executeUpdate();
 		
 		statement.close();
