@@ -58,6 +58,9 @@
 </script>
 <%	  
 		String action = request.getParameter("action"); 
+		if(action == null){
+			action = "Cadastrar";
+		}
 		String usuario = request.getParameter("idUsuario"); 
 		int idUsuario = 0;
 		if(usuario != null){

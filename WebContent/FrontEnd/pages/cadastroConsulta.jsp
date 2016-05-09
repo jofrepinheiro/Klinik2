@@ -13,12 +13,12 @@
 <html lang="en">
 <script>
 	function desabilitarPacienteMedico(paciente, medico){
-		document.forms["formCadastro"]["paciente"].value = paciente;
-		document.forms["formCadastro"]["medico"].value = medico;
-		document.forms["formCadastro"]["paciente"].disable = "disable";
-		document.forms["formCadastro"]["medico"].disable = "disable";
-
-
+		alert("Entrou");
+		//ocument.forms["formCadastro"]["paciente"].value = paciente;
+		//document.forms["formCadastro"]["medico"].value = medico;
+		document.forms["formCadastro"]["paciente"].disable = true;
+		document.forms["formCadastro"]["medico"].disable = true;
+		alert("Deu erro");
 	}
 </script>
 <head>
@@ -199,13 +199,13 @@
 							Cadastro de Consulta
                         </div>
                         <div class="panel-body">
-                            <form method="post" role="form" name="formCadastro"  onsubmit="return valida_form(this)" action="../../Controle/controleConsulta.jsp">
+                            <form method="post" role="form" name="formCadastro" onsubmit="return valida_form(this)" action="../../Controle/controleConsulta.jsp">
 								<input type="hidden" name="action" value="Cadastrar">
 								<div class="row">
 									<div class="col-lg-12">
 										<div class = "form-group">
 										<label>Paciente</label>
-											<select class="form-control" name="paciente" id="uf">
+											<select class="form-control" name="paciente" id="paciente">
 												<% for(int i=0; i < pacienteList.size(); i++){%>
 												<option value="<%=pacienteList.get(i).getIdPaciente()%>"><%=pacienteList.get(i).getCpf()%> - <%=pacienteList.get(i).getNome()%></option>
 												<%} %> 
@@ -215,7 +215,7 @@
 										
 										<div class = "form-group">
 										<label>Médico</label>
-											<select class="form-control" name="medico" id="uf">
+											<select class="form-control" name="medico" id="medico">
 												<% for(int i=0; i < medicoList.size();i++){%>
 												<option value="<%=medicoList.get(i).getIdMedico()%>"><%=medicoList.get(i).getCpf()%> - <%=medicoList.get(i).getNome()%> - <%=medicoList.get(i).getEspecialidade()%></option>
 												<%} %>										
