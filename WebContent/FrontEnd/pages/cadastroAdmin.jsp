@@ -1,3 +1,9 @@
+<%@page import="DAO.EnderecoDAO"%>
+<%@page import="model.Endereco"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="DAO.AdministradorDAO"%>
+<%@page import="model.Administrador"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -59,14 +65,42 @@
 </script>
 
 	<%	  
+		int idUsuario = 0;
 		String action = request.getParameter("action"); 
+		String usuario = request.getParameter("idUsuario");
+		String data = "";
+
 		if(action == null){
 			action = "Cadastrar";
 		}
-		String usuario = request.getParameter("idUsuario"); 
-		int idUsuario = 0;
+		
 		if(usuario != null){
 			idUsuario = Integer.parseInt(usuario);
+		}
+		
+		Administrador administrador = new Administrador();
+		Endereco endereco = new Endereco();
+		administrador.setNome("");
+		administrador.setCpf("");
+		administrador.setEmail("");
+		administrador.setLogin("");
+		administrador.setSenha("");
+		administrador.setTelefone("");
+		administrador.setAtivo(1);
+		endereco.setBairro("");
+		endereco.setCEP("");
+		endereco.setComplemento("");
+		endereco.setLogradouro("");
+		endereco.setNumero(0);
+		
+		if(action.equalsIgnoreCase("Alterar")){
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			AdministradorDAO administradorDAO = new AdministradorDAO();
+			administrador = administradorDAO.getAdministradorUsuario(idUsuario);
+			System.out.println("Nome do Adm" + administrador.getDataNascimento());
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			data = format.format(administrador.getDataNascimento());
+			endereco = enderecoDAO.getEndereco(administrador.getIdEndereco());
 		}
 		
 		String perfil = (String) session.getAttribute("perfilUsuario");
@@ -217,37 +251,37 @@
 									<div class="col-lg-6">
 										<div class="form-group">
                                             <label>Login</label>
-                                            <input name="login" class="form-control" placeholder="">
+                                            <input name="login" class="form-control" placeholder="" value="<%=administrador.getLogin()%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Senha</label>
-                                            <input name="senha" type="password" class="form-control" placeholder="">
+                                            <input name="senha" type="password" class="form-control" placeholder="" value="<%=administrador.getSenha()%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Data de Nascimento</label>
-                                            <input class="form-control" name="dataNascimento" placeholder="DD/MM/AAAA">
+                                            <input class="form-control" name="dataNascimento" placeholder="DD/MM/AAAA" value="<%=data%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Nome</label>
-                                            <input class="form-control" name="nome" placeholder="">
+                                            <input class="form-control" name="nome" placeholder="" value="<%=administrador.getNome()%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>CPF</label>
-                                            <input name="cpf" class="form-control" placeholder="">
+                                            <input name="cpf" class="form-control" placeholder="" value="<%=administrador.getCpf()%>">
                                         </div>
                                         
 										<div class="form-group">
                                             <label>Telefone</label>
-                                            <input class="form-control" name="telefone" placeholder="(XX) X XXXX XXXX">
+                                            <input class="form-control" name="telefone" placeholder="(XX)XXXX-XXXX" value="<%=administrador.getTelefone()%>">
                                         </div>
 										
 										<div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" name="email" placeholder="john@doe.com">
+                                            <input class="form-control" name="email" placeholder="" value="<%=administrador.getEmail()%>">
                                         </div>
 										
                                 </div>
@@ -256,27 +290,27 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label>CEP</label>
-										<input class="form-control" placeholder="" name="cep">
+										<input class="form-control" placeholder="" name="cep" value="<%=endereco.getCEP()%>">
                                     </div>
 									
 									<div class="form-group">
 										<label>Logradouro</label>
-										<input class="form-control" name="logradouro">
+										<input class="form-control" name="logradouro" value="<%=endereco.getLogradouro()%>">
 									</div>
 									
 									<div class="form-group">
 										<label>Número</label>
-										<input class="form-control" placeholder="" name="numero">
+										<input class="form-control" placeholder="" name="numero" value="<%=endereco.getNumero()%>">
 									</div>
 									
 									<div class="form-group">
 										<label>Bairro</label>
-										<input class="form-control" placeholder="" name="bairro">
+										<input class="form-control" placeholder="" name="bairro" value="<%=endereco.getBairro()%>">
 									</div>									
 									
 									<div class="form-group">
 										<label>Complemento</label>
-										<input class="form-control" placeholder="" name="complemento">
+										<input class="form-control" placeholder="" name="complemento" value="<%=endereco.getComplemento()%>">
 									</div>
 								</div>	
                             </div>

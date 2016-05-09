@@ -151,6 +151,7 @@ public class ConsultaDAO {
 		return consultasList;
 	}	
 	
+<<<<<<< HEAD
 	public void atualizarPagamento(int idpagamento, int idconsulta) throws SQLException{
 		Connection con = new Conexao().getConnection();
 		
@@ -187,5 +188,22 @@ public class ConsultaDAO {
 		statement.close();
 		con.close();
 		return consultasList;
+=======
+	public void setAtendida(int idConsulta) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		String sql = "UPDATE CONSULTA SET "
+				+ " atendida = 1 "
+				+ "WHERE idConsulta = ?";
+		
+		PreparedStatement statement = con.prepareStatement(sql);
+		
+		statement.setInt(1,idConsulta);
+		statement.executeUpdate();
+		
+		statement.close();
+		con.close();
+>>>>>>> db3391360c87b394fc73d5e4a248dcb1711633bd
 	}
 }
