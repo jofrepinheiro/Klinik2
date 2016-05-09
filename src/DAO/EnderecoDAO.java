@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import conexao.Conexao;
 import model.Administrador;
 import model.Endereco;
+import model.Medico;
 
 public class EnderecoDAO {
 	public void cadastrarEndereco(Endereco endereco) throws SQLException{
@@ -41,5 +42,27 @@ public class EnderecoDAO {
 		con.close();
 		
 		return idEndereco;
+	}
+	
+	public Endereco getEndereco(int idEndereco) throws SQLException{
+		Connection con = new Conexao().getConnection();
+		Endereco endereco = new Endereco();
+		String sql = "SELECT * FROM ENDERECO WHERE idEndereco = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, idEndereco);
+		ResultSet rs = statement.executeQuery();
+		
+			while (rs.next()){
+				endereco.setIdEndereco(rs.getInt(1));
+				endereco.setLogradouro(rs.getString(2));
+				endereco.setBairro(rs.getString(3));
+				endereco.setNumero(rs.getInt(4));
+				endereco.setCEP(rs.getString(5));
+				endereco.setComplemento(rs.getString(6));
+				
+			}
+			statement.close();
+			con.close();
+		return endereco;
 	}
 }
